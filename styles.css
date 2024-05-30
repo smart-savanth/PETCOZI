@@ -55,7 +55,7 @@
 }
 
 .btn:hover {
-  background-color:#FAB85B ;
+  background-color:rgb(45, 239, 45) ;
 }
 
 img {
@@ -566,4 +566,18 @@ nav {
   .footer__col:first-child {
     grid-area: unset;
   }
+}
+
+.app{
+  width: 150px;
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  white-space: nowrap;
+  color: wheat;
+  background-color:white;
+  border-radius: 140px;
+  transition: 0.3s;
+  cursor: pointer;
+  position:sticky;
 }
