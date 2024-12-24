@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cursorEffect = document.querySelector('.cursor-effect');
-  // const menuBtn = document.getElementById("menu-btn");
   const navContent = document.querySelector(".nav__content");
-  // const menuBtnIcon = menuBtn.querySelector("i");
-  // const navLinks = document.querySelector(".nav__links");
-  const faq = document.querySelector(".faq-grid");
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.querySelector('.nav__mobile__menu');
   const menuBtnIcon = menuBtn.querySelector('i');
-  let whatsappClickCount = 0;
-  let whatsappClickTimer;
-   // Toggle menu function
-   function toggleMenu() {
+  const navLinks = document.querySelectorAll('.nav__links a');
+
+  // Toggle menu function
+  function toggleMenu() {
     mobileMenu.classList.toggle('active');
-    
+
     // Toggle menu icon
     if (mobileMenu.classList.contains('active')) {
       menuBtnIcon.className = 'ri-close-line';
@@ -24,32 +20,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Event listeners
+  // Event listener for menu button
   menuBtn.addEventListener('click', toggleMenu);
 
-  // Close menu when clicking links
-  const navLinks = document.querySelectorAll('.nav__links a');
+  // Close menu and smooth scroll when clicking on a nav link
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      toggleMenu();
-      
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default anchor behavior
       const targetId = link.getAttribute('href').substring(1);
       const targetSection = document.getElementById(targetId);
+
       if (targetSection) {
         targetSection.scrollIntoView({ behavior: 'smooth' });
       }
-    });
 
-  // Close menu when clicking outside
+      // Close the mobile menu
+      if (mobileMenu.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+  });
+
+  // Close menu when clicking outside the menu
   document.addEventListener('click', (e) => {
-    if (mobileMenu.classList.contains('active') && 
-        !mobileMenu.contains(e.target) && 
-        !menuBtn.contains(e.target)) {
+    if (
+      mobileMenu.classList.contains('active') &&
+      !mobileMenu.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
       toggleMenu();
     }
   });
 
-  // Reset on resize
+  // Reset menu state on window resize
   window.addEventListener('resize', () => {
     if (window.innerWidth > 400) {
       mobileMenu.classList.remove('active');
@@ -57,8 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     }
   });
-});
-  // Enhanced FAQ Accordion
+
+  // Enhanced FAQ Section
+  const faq = document.querySelector(".faq-grid");
+
   if (faq) {
     faq.addEventListener("click", (e) => {
       const faqCard = e.target.closest('.faq-card');
@@ -86,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  let whatsappClickCount = 0;
+  let whatsappClickTimer;
   // Enhanced WhatsApp Button with Mobile Support
   function createWhatsAppButton() {
     const whatsappButton = document.createElement('a');
@@ -129,15 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   createWhatsAppButton();
 
-  // Handle resize events for responsive behavior
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 400) {
-      navLinks.style.right = "";
-      document.body.style.overflow = "auto";
-      navContent.classList.remove("open");
-      menuBtnIcon.setAttribute("class", "ri-menu-line");
-    }
-  });
+  
 });
 // Boarding Modal
 const bookBoardingBtn = document.querySelector(".services__card-boarding .services__btn");
