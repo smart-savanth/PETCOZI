@@ -302,7 +302,7 @@ function unhighlightReview(card) {
 function startScroll() {
     function scroll() {
         if (!isHovered) {
-            scrollPosition -= 1;
+            scrollPosition -= 0.5;
             const firstCard = document.querySelector('.review-card');
             const cardWidth = firstCard.offsetWidth + parseInt(getComputedStyle(firstCard).marginRight);
             const totalWidth = cardWidth * (document.querySelectorAll('.review-card').length / 2);
