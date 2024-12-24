@@ -184,26 +184,23 @@ nav {
   width: 100%;
 }
 @media screen and (max-width: 400px) {
+  
   .nav__header {
-    padding: 0.75rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(44, 62, 80, 0.95);
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 1000;
+    padding: 1rem;
+    background: rgba(44, 62, 80, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-
   .logo img {
     width: 100px;
     height: auto;
   }
 
   .nav__menu__btn {
-    display: block;
     font-size: 1.8rem;
-    color: var(--primary-color);
+    color: #ffffff;
     cursor: pointer;
     z-index: 1002;
   }
@@ -211,29 +208,45 @@ nav {
   .nav__mobile__menu {
     position: fixed;
     top: 0;
-    left: -100%;
-    width: 100%;
+    right: -80%; /* Initially hidden */
+    width: 70%; /* Menu takes 70% of the screen width */
     height: 100vh;
-    background: rgba(44, 62, 80, 0.98);
-    backdrop-filter: blur(10px);
-    transition: 0.3s ease-in-out;
+    background: rgba(44, 62, 80, 0.95);
+    backdrop-filter: blur(10px); /* Adds a subtle blur effect */
+    transition: right 0.3s ease-in-out;
     z-index: 1001;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 12px 12px 0;
   }
 
   .nav__mobile__menu.active {
-    left: 0;
+    right: 0;
   }
 
   .nav__links {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1.2rem;
+    padding: 1.5rem;
   }
 
+  .nav__links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f39c12;
+    transition: width 0.3s ease;
+  }
+
+  .nav__links a:hover::after {
+    width: 100%;
+  }
   .nav__links li {
     opacity: 0;
     transform: translateY(20px);
@@ -251,27 +264,29 @@ nav {
   .nav__mobile__menu.active .nav__links li:nth-child(4) { transition-delay: 0.5s; }
 
   .nav__links a {
-    color: var(--primary-color);
-    font-size: 1.4rem;
+    color: #ffffff;
+    font-size: 1.1rem;
     font-weight: 500;
+    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    transition: color 0.3s ease, transform 0.3s ease;
   }
 
   .nav__links a:hover {
-    color: var(--primary-light);
+    color: #f39c12;
+    transform: scale(1.05);
   }
-
   .nav__close {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 1rem;
+    right: 1rem;
     font-size: 1.8rem;
-    color: var(--primary-color);
+    color: #ffffff;
     cursor: pointer;
-    z-index: 1002;
   }
+
   .header {
     padding-top: 60px;
     height: auto;
@@ -1881,9 +1896,9 @@ footer.animate .footer__col {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .nav__links {
+  /* .nav__links {
     display: none;
-  }
+  } */
 
   .nav__menu__btn {
     display: block;
