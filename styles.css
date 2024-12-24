@@ -346,6 +346,7 @@ nav {
   opacity: 1;
   visibility: visible;
 }
+
 @media screen and (max-width: 400px){
   .whatsapp-float-button {
     bottom: 20px;
