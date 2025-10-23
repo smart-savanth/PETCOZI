@@ -69,6 +69,8 @@ ul {
   background-color: var(--secondary-color);
   transform: scale(1.05);
 }
+
+
 .header {
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.75),
@@ -721,14 +723,15 @@ nav {
 .services__btn {
   background: var(--primary-color);
   color: var(--secondary-color);
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
+  padding: 0.8rem 1rem;
+  border-radius: 15px;
   font-weight: 500;
   display: inline-block;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.5s ease 0.4s;
 }
+
 .services__card:hover .services__btn {
   transform: translateY(0);
   opacity: 1;
@@ -738,6 +741,22 @@ nav {
   color: var(--secondary-color);
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-2{
+  background: transparent;
+  /* border-color: white; */
+  border: 2px solid white;
+  color: var(--white);
+  border-radius: 15px;
+  margin-left: 20px;
+}
+
+.btn-2:hover{
+  background: transparent;
+  /* border-color: white; */
+  border: 1px solid white;
+  color: var(--white);
 }
 .services__card-boarding {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
