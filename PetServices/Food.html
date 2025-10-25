@@ -100,9 +100,23 @@
                                 can rest assured knowing your furry companion is in safe hands.</p>
                         </div>
 
-                        <div class="book-btn">
-                            <button>Book Food</button>
+                        <!-- <div class="book-btn">
+                            <button>Book Boarding</button>
+                        </div> -->
+
+                        <!-- Floating Button Container -->
+                        <div class="fab-container">
+                            <div class="fab" id="mainFab">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                            <div class="fab-options" id="fabOptions">
+                                <a href="tel:+917386930476" class="fab-option">📞 Call Now</a>
+                                <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank" class="fab-option">💬 Chat Now</a>
+                            </div>
                         </div>
+
+
+
 
                         <div class="questions">
                             <h1>Why Choose PetCozi for Pet Boarding in Dilsukhnagar?</h1>
@@ -251,6 +265,25 @@
             </div>
         </main>
     </div>
+
+
+
+    <script>
+        const fabContainer = document.getElementById("fabContainer");
+
+        fabContainer.addEventListener("click", () => {
+            fabContainer.classList.toggle("active");
+        });
+
+        // Optional: close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!fabContainer.contains(e.target)) {
+                fabContainer.classList.remove("active");
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>

@@ -1941,3 +1941,86 @@ footer.animate .footer__col {
     height: 350px;
   }
 }
+
+
+
+
+
+
+/* Floating Container */
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 10px;
+  z-index: 999;
+}
+
+/* Main Button */
+.fab {
+  width: 65px;
+  height: 65px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.fab:hover {
+  background-color: #1ebd5d;
+  transform: scale(1.1);
+}
+
+/* Options Hidden by Default */
+.fab-options {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Show Options */
+.fab-container.active .fab-options,
+.fab-container:hover .fab-options {
+  display: flex;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Each Option */
+.fab-option {
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.fab-option:hover {
+  background-color:var(--secondary-color);
+  color: white;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

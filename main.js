@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  createWhatsAppButton();
+  // createWhatsAppButton();
 
   
 });
