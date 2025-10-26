@@ -365,7 +365,7 @@ nav {
     }
 
     .heading div {
-        width: 83%;
+        width: 84%;
         color: var(--white);
         padding: 20px 10px;
     }
@@ -384,6 +384,7 @@ nav {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        justify-self: anchor-center;
     }
 
     .main-heading h2 {

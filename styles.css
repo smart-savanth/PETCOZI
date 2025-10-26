@@ -684,7 +684,7 @@ nav {
 }
 .services__icon {
   font-size: 3rem;
-  color: var(--accent-color);
+  color: var(--white);
   margin-bottom: 1rem;
   display: inline-block;
   transform: translateY(20px);
