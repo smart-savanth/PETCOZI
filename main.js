@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  createWhatsAppButton();
+  // createWhatsAppButton();
 
   
 });
@@ -160,16 +160,16 @@ const orderNowBtnFood = document.querySelector("#modal-overlay-food .book-now-bt
 const queryNowBtnFood = document.querySelectorAll("#modal-overlay-food .book-now-btn")[1];
 
 // Boarding Modal Functions
-bookBoardingBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  modalOverlay.style.display = "flex";
-  // document.body.style.overflow = "hidden";
-});
+// bookBoardingBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   // modalOverlay.style.display = "flex";
+//   // document.body.style.overflow = "hidden";
+// });
 
-closeBtn.addEventListener("click", () => {
-  modalOverlay.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeBtn.addEventListener("click", () => {
+//   modalOverlay.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 bookNowBtn.addEventListener("click", () => {
   window.location.href = "https://wa.link/tssicm";
@@ -180,16 +180,16 @@ queryNowBtn.addEventListener("click", () => {
 });
 
 // Grooming Modal Functions
-bookGroomingBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  modalOverlayGrooming.style.display = "flex";
-  // document.body.style.overflow = "hidden";
-});
+// bookGroomingBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   modalOverlayGrooming.style.display = "flex";
+//   // document.body.style.overflow = "hidden";
+// });
 
-closeBtnGrooming.addEventListener("click", () => {
-  modalOverlayGrooming.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeBtnGrooming.addEventListener("click", () => {
+//   modalOverlayGrooming.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 bookNowBtnGrooming.addEventListener("click", () => {
   window.location.href = "https://wa.link/tssicm";
@@ -200,16 +200,16 @@ queryNowBtnGrooming.addEventListener("click", () => {
 });
 
 // Food Delivery Modal Functions
-orderFoodBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  modalOverlayFood.style.display = "flex";
-  // document.body.style.overflow = "hidden";
-});
+// orderFoodBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   modalOverlayFood.style.display = "flex";
+//   // document.body.style.overflow = "hidden";
+// });
 
-closeBtnFood.addEventListener("click", () => {
-  modalOverlayFood.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeBtnFood.addEventListener("click", () => {
+//   modalOverlayFood.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 orderNowBtnFood.addEventListener("click", () => {
   window.location.href = "https://wa.link/tssicm";
