@@ -115,12 +115,13 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
-    background: linear-gradient(135deg,
+    /* background: linear-gradient(135deg,
             rgba(44, 62, 80, 0.9) 0%,
-            rgba(44, 62, 80, 0.7) 100%);
+            rgba(44, 62, 80, 0.7) 100%); */
     /* background: #1F2937; */
     backdrop-filter: blur(15px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--secondary-color);
 }
 
 .nav__header {
@@ -338,7 +339,7 @@ nav {
         position: relative;
         z-index: 1;
         /* Text appears on top */
-        padding: 20px 41px;
+        padding: 20px 70px;
         color: var(--text-dark);
     }
 
@@ -423,7 +424,7 @@ nav {
 
     .open-para{
         font-size: 24px;
-        width: 90%;
+        width: 95%;
         padding: 11px 47px;;
     }
 
@@ -436,7 +437,7 @@ nav {
     }
 
     .ques {
-        width: 90%;
+        width: 97%;
         display: flex;
         justify-content: flex-start;
         padding: 15px 0;
@@ -519,6 +520,8 @@ nav {
   background-color:var(--secondary-color);
   color: white;
 }
+
+
 
 /* Fade-in Animation */
 @keyframes fadeInUp {
