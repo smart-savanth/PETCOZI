@@ -110,6 +110,7 @@ ul {
   gap: 1rem;
   transition: all 0.4s ease;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 .header__card:hover {
   transform: translateY(-15px) rotateX(10deg);
@@ -188,7 +189,7 @@ nav {
 .nav__links a:hover::after {
   width: 100%;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 520px) {
   
   .nav__header {
     display: flex;
@@ -204,6 +205,7 @@ nav {
   }
 
   .nav__menu__btn {
+    display: block;
     font-size: 1.8rem;
     color: #ffffff;
     cursor: pointer;
@@ -445,6 +447,14 @@ nav {
     border-radius: 10px;
 }
 
+.know-more:hover{
+    color: var(--primary-color);
+    background-color: black;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -500,7 +510,8 @@ nav {
 }
 
 .feature-box h4 {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
+  color: #333333;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1815,9 +1826,10 @@ footer {
 .footer__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 5rem;
   position: relative;
   z-index: 10;
+  padding-bottom: 70px;
 }
 
 .footer__col {
@@ -1932,10 +1944,6 @@ footer.animate .footer__col {
   /* .nav__links {
     display: none;
   } */
-
-  .nav__menu__btn {
-    display: block;
-  }
 
   .header__container h1 {
     font-size: 2.5rem;
