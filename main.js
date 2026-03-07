@@ -61,24 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Enhanced FAQ Section
-  const faq = document.querySelector(".faq-grid");
-
-  if (faq) {
-    faq.addEventListener("click", (e) => {
-      const faqCard = e.target.closest('.faq-card');
-      if (faqCard && (
-        e.target.classList.contains('faq-question') ||
-        e.target.classList.contains('faq-icon')
-      )) {
-        faqCard.classList.toggle('active');
-        Array.from(faq.children)
-          .filter(card => card !== faqCard)
-          .forEach(card => card.classList.remove('active'));
-      }
-    });
-  }
-
   // Footer Animation
   window.addEventListener('scroll', () => {
     const footer = document.querySelector('footer');
@@ -542,21 +524,30 @@ function simulateHover(element) {
     }, 5000);
 }
 
-// Add click event listeners to header cards
-headerFoodCard.addEventListener('click', () => {
+// Add click event listeners to header cards only when cards exist.
+if (
+  headerFoodCard &&
+  headerBoardingCard &&
+  headerGroomingCard &&
+  foodServiceCard &&
+  boardingServiceCard &&
+  groomingServiceCard
+) {
+  headerFoodCard.addEventListener('click', () => {
     scrollToElement(foodServiceCard);
     simulateHover(foodServiceCard);
-});
+  });
 
-headerBoardingCard.addEventListener('click', () => {
+  headerBoardingCard.addEventListener('click', () => {
     scrollToElement(boardingServiceCard);
     simulateHover(boardingServiceCard);
-});
+  });
 
-headerGroomingCard.addEventListener('click', () => {
+  headerGroomingCard.addEventListener('click', () => {
     scrollToElement(groomingServiceCard);
     simulateHover(groomingServiceCard);
-});
+  });
+}
 
 // Add this CSS to your stylesheet
 const style = document.createElement('style');
@@ -666,7 +657,10 @@ document.head.appendChild(faqStyles);
 // Function to update FAQ content
 function updateFAQContent(questionSet) {
   const faqGrid = document.querySelector('.faq-grid');
+  if (!faqGrid) return;
+
   const faqCards = faqGrid.querySelectorAll('.faq-card');
+  if (!faqCards.length) return;
 
   // Add fade out effect
   faqGrid.classList.add('fade-out');
@@ -700,24 +694,26 @@ function rotateFAQs() {
 }
 
 // Set up initial content
-updateFAQContent(faqSets[0]);
+const faqGridElement = document.querySelector('.faq-grid');
+if (faqGridElement) {
+  updateFAQContent(faqSets[0]);
 
-// Start rotation
-setInterval(rotateFAQs, 30000); // Rotate every 30 seconds
+  // Rotate only when FAQ exists on the page.
+  setInterval(rotateFAQs, 30000);
 
-// Enhanced click handler for FAQ cards
-document.querySelector('.faq-grid').addEventListener('click', (e) => {
-  const faqCard = e.target.closest('.faq-card');
-  if (!faqCard) return;
+  // Clicking anywhere inside a FAQ card header toggles the card.
+  faqGridElement.addEventListener('click', (e) => {
+    const faqCard = e.target.closest('.faq-card');
+    const faqHeader = e.target.closest('.faq-header');
+    if (!faqCard || !faqHeader) return;
 
-  // Remove active class from all other cards with smooth transition
-  const allCards = document.querySelectorAll('.faq-card');
-  allCards.forEach(card => {
-    if (card !== faqCard) {
-      card.classList.remove('active');
-    }
+    const allCards = faqGridElement.querySelectorAll('.faq-card');
+    allCards.forEach(card => {
+      if (card !== faqCard) {
+        card.classList.remove('active');
+      }
+    });
+
+    faqCard.classList.toggle('active');
   });
-
-  // Toggle active class on clicked card
-  faqCard.classList.toggle('active');
-});
+}
