@@ -4,534 +4,923 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <title>PetCozi - Our Services</title>
+    <!-- Google Font: Closest alternative to Gotham -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Remix Icon for Navbar -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
 
-    <!-- seo meta tags  -->
-    <meta name="keywords"
-        content=" Pet Grooming, Pet Grooming Services In Dilsukhnagar, Pet Grooming Services In Hyderabad ">
-    <meta property="og:title" content=" Pet Grooming Services In Hyderabad" />
-    <meta name="google-site-verification" content="iXtUxJOVhS1z47T5lO-qd55X__uZXmXCyG5tR3SFN-0" />
-    <meta name="description" content="PetCozi offers professional pet grooming services in Dilsukhnagar, Hyderabad.
-    Bathing, haircuts, nail trimming, and more for happy, healthy pets.">
-    <title>Pet Grooming Services In Dilsukhnagar, Hyderabad</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-yellow: #F8F800;
+            --accent-yellow: #FBD73D;
+            --btn-yellow: #FFF349;
+            --text-black: #000000;
+            --text-gray: rgba(0, 0, 0, 0.5);
+            --bg-light-gray: #D9D9D9;
+            --bg-white: #FFFFFF;
+            --font-main: 'Gotham', 'Montserrat', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Light.woff2') format('woff2');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Book.woff2') format('woff2');
+            font-weight: 350;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Medium.woff2') format('woff2');
+            font-weight: 500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-white);
+            background-image: url("/assets/bg-img.png");
+            color: var(--text-black);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.7;   /* 90% visible */
+    z-index: -1;
+}
+
+        /* --- Background Watermark --- */
+        .bg-watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            z-index: -1;
+            pointer-events: none;
+            background: url('https://placehold.co/1440x5000/png') no-repeat top center / cover;
+        }
+
+        /* --- Header / Navigation (Updated Styles) --- */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--text-black);
+            z-index: 1000;
+            padding: 0 80px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* New Navbar Structure Styles */
+        header nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo img {
+            height: 80px; /* Adjusted height to fit header */
+            width: auto;
+        }
+
+        .nav__menu__btn {
+            display: none; /* Hidden on desktop */
+            color: var(--primary-yellow);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .nav__mobile__menu {
+            display: flex;
+        }
+
+        .nav__links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav__links a {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--primary-yellow);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .nav__links a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 0;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-line {
+            width: 237px;
+            height: 4px;
+            background: var(--accent-yellow);
+            margin: 0 auto 30px;
+        }
+
+        /* --- Service Tabs (Proportional Positioning) --- */
+        .service-tabs {
+            position: relative;
+            background: var(--bg-light-gray);
+            width: 100%;
+            height: 70px;
+            margin-top: 10px;
+        }
+
+        .tab-item {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .tab-item.active {
+            color: var(--text-black);
+        }
+
+        .tab-item::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0px;
+            height: 3px;
+            background: #FFCF02;
+            transition: width 0.3s;
+        }
+
+        .tab-item.active::after {
+            width: 76px;
+        }
+
+        .tab-grooming {
+            left: 8.8%;
+        }
+
+        .tab-boarding {
+            left: 44.8%;
+        }
+
+        .tab-food {
+            left: 77.6%;
+        }
+
+        /* --- Main Content Sections --- */
+        .container {
+            max-width: 1314px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Content Switching Logic */
+        .service-content {
+            display: none; /* Hidden by default */
+        }
+        
+        .service-content.active {
+            display: block; /* Show active content */
+        }
+
+        .section-title {
+            position: relative;
+            margin-left: 4.1%;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 500;
+            line-height: 32px;
+            color: #000;
+        }
+
+        .section-title-location {
+            position: relative;
+            margin-left: 4.1%;
+            margin-top: 100px;
+            margin-bottom: 120px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 500;
+            line-height: 32px;
+            color: #000;
+        }
+
+        .section-title-location::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 39%;
+            width: 22%;
+            height: 2px;
+            background: #585656;
+        }
+
+        .section-title-s {
+            position: relative;
+            margin-left: 4.1%;
+            margin-bottom: 40px;
+            margin-top: 120px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 500;
+            line-height: 32px;
+            color: #050505;
+        }
+
+        .section-title-s::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: #585656;
+        }
+
+        .section-title-p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 500;
+            color: #000;
+        }
+
+        /* --- Wrapper for Alignment --- */
+        .paw-text-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding-left: 4.8%;
+        }
+
+        .paw-icon {
+            font-size: 24px;
+            margin-top: 0.35em;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            flex-shrink: 0;
+            color: #080707;
+        }
+
+        .divider {
+            padding-left: 4.8%;
+            width: 40%;
+            height: 1px;
+            background: rgba(10, 10, 10, 0.1);
+        }
+
+        .content-text {
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            margin-left: 4.1%;
+        }
+
+        .content-text-p {
+            font-family: 'Gotham', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 35px;
+            margin-bottom: 30px;
+            margin-left: 0%;
+        }
+
+        /* List Styling */
+        .paw-list {
+            list-style: none;
+            margin-left: 0%;
+            margin-top: 30px;
+        }
+
+        .paw-list li {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .paw-list li::before {
+            content: '🐾';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 20px;
+        }
+
+        /* --- Buttons --- */
+        .btn-primary {
+            display: inline-block;
+            background: var(--btn-yellow);
+            color: var(--text-black);
+            font-size: 32px;
+            font-weight: 500;
+            padding: 20px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #f8d800;
+        }
+
+        .center-box {
+            text-align: center;
+        }
+
+        /* --- Locations Grid --- */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px 80px;
+            margin-top: 50px;
+        }
+
+        .location-item {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 400;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .location-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+            border-radius: 10px;
+        }
+
+        /* Location Paw Icon */
+        .location-item::before {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 39px;
+            background: url('/assets/paws-black.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto 8px;
+            background-position: center;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--bg-white);
+            padding: 60px 20px;
+            margin-top: 80px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 36px;
+            font-weight: 350;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 20px;
+            font-weight: 350;
+            color: #424242;
+            display: block;
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-black);
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            color: var(--text-black);
+            text-decoration: none;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .locations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+                height: 80px;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            /* Mobile Navbar Styles */
+            .nav__menu__btn {
+                display: block; /* Show Hamburger */
+            }
+
+            .nav__mobile__menu {
+                display: none; /* Hidden by default */
+                position: absolute;
+                top: 80px; /* Below header */
+                left: 0;
+                width: 100%;
+                background: var(--text-black);
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .nav__mobile__menu.active {
+                display: flex; /* Show when toggled */
+            }
+
+            .nav__links {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .nav__links a {
+                font-size: 18px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .service-tabs {
+                height: auto;
+                padding: 20px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .tab-item {
+                position: relative;
+                left: 0 !important;
+                transform: none;
+                top: 0;
+                font-size: 24px;
+            }
+
+            .content-text,
+            .paw-list li {
+                font-size: 18px;
+            }
+
+            .btn-primary {
+                font-size: 24px;
+                padding: 15px 30px;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <!-- <nav>
-                <div class="Nav_Header">
-                    <div class="nav-left">
-                        <div class="logo">
-                            <img src="/assets/pixelcut-export (1) copy.png" alt="">
-                        </div>
-                        <ul>
-                            <li><a href="/index.html#home">Home</a></li>
-                            <li><a href="">Products</a></li>
-                            <li><a href="/index.html#service">Services</a></li>
-                            <li><a href="">Blogs</a></li>
-                            <li><a href="/index.html#about">About Us</a></li>
-                            <li><a href="">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="search-cont">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <i class="ri-search-line"></i>
-                        </div>
-                        <div class="nav-icons">
-                            <i class="ri-shopping-cart-2-line"></i>
-                            <i class="ri-heart-line"></i>
-                            <i class="ri-user-3-line"></i>
-                        </div>
-                    </div>
+
+    <div class="bg-watermark"></div>
+
+    <!-- Header (Replaced with Previous Code Structure) -->
+    <header>
+        <nav>
+            <div class="nav__header">
+                <div class="logo">
+                    <img src="/assets/pixelcut-export (1) copy.png" alt="PetCozi Logo" />
                 </div>
-            </nav> -->
-            <nav>
-                <div class="nav__header">
-                    <div class="logo">
-                        <img src="/assets/pixelcut-export (1) copy.png" alt="PetCozi Logo" />
-                    </div>
-                    <div class="nav__menu__btn" id="menu-btn">
-                        <i class="ri-menu-line"></i>
-                    </div>
-                    <div class="nav__mobile__menu">
-                        <!-- <div class="nav__content"> -->
-                       <ul class="nav__links" id="nav-links">
-                            <li><a href="./index.html"><i class="ri-home-line"></i> Home</a></li>
-                            <li><a href="./index.html#about"><i class="ri-information-line"></i> About</a></li>
-                            <li><a href="./index.html#client"><i class="ri-user-star-line"></i> Purpose</a></li>
-                            <li><a href="./index.html#service"><i class="ri-service-line"></i> Service</a></li>
-                        </ul>
-                    </div>
-                    <!-- </div> -->
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
                 </div>
-            </nav>
-        </header>
-
-        <main>
-            <div class="main-cont">
-                <div class="back">
-                    <a href="/index.html#services">
-                        <i class="ri-arrow-drop-left-line"></i>Back</a>
-                </div>
-                <div class="img-container">
-                    <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
-                    <div class="content">
-                        
-                        <div class="heading">
-                            <div class="main-heading">
-                                <div>
-                                    <h1>Pet Grooming Services In Dilsukhnagar, Hyderabad</h1>
-                                    <img src="/assets/paws.svg" alt="" class="paws">
-                                </div>
-                                <h2>PetCozi offers professional pet grooming services in Dilsukhnagar, Hyderabad.
-                                    Bathing, haircuts, nail trimming, and more for happy, healthy pets.</h2>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <h1>Pet Grooming Services In Hyderabad</h1>
-                            <p>At PetCozi, we understand that your pets are more than just animals—they are cherished
-                                family
-                                members who deserve love, care, and attention. Located in Dilsukhnagar, Hyderabad, we
-                                specialize in comprehensive pet grooming services designed to keep your pets healthy,
-                                happy, and looking their absolute best. Our mission is to provide top-notch grooming
-                                experiences that ensure your pets not only look great but feel great too.
-                            </p>
-
-                            <h2>Why Pet Grooming is Important</h2>
-                            <p>Pet grooming is not just about aesthetics; it is an essential part of maintaining your
-                                pet’s overall
-                                health and wellbeing. Regular grooming helps prevent skin infections, reduces shedding,
-                                and
-                                keeps your pet’s coat clean and free of tangles. At PetCozi, our grooming services are
-                                designed
-                                to cater to both the physical and emotional needs of your pets. Our trained
-                                professionals
-                                understand pet behavior and ensure a safe and stress-free grooming environment for your
-                                furry
-                                friends.</p>
-
-                            <h3></h3>
-                        </div>
-
-                        <div class="book-btn">
-                            <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Grooming</a>
-                        </div>
-
-                        <!-- Floating Button Container -->
-                        <div class="fab-container">
-                            <div class="fab" id="mainFab">
-                                <i class="ri-whatsapp-line"></i>
-                            </div>
-                            <div class="fab-options" id="fabOptions">
-                                <a href="tel:+917386930476" class="fab-option">📞 Call Now</a>
-                                <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank" class="fab-option">💬
-                                    Chat Now</a>
-                            </div>
-                        </div>
-
-                        <div class="questions">
-                            <h1>Our Pet Grooming Services</h1>
-                            <div class="line"></div>
-                            <p class="open-para">We offer a wide range of grooming services tailored to meet the unique
-                                needs of your pets.
-                                Whether you have a small dog, a large breed, or a playful cat, PetCozi provides
-                                personalized
-                                grooming solutions that include:</p>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Bathing and Shampooing</h2>
-                                    <p>Our bathing services use high-quality, pet-friendly shampoos that are gentle on
-                                        your pet’s skin
-                                        and coat. We offer specialized treatments for pets with sensitive skin,
-                                        allergies, or skin
-                                        conditions. Regular baths at PetCozi not only keep your pet clean but also
-                                        promote a healthy
-                                        and shiny coat.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Hair Trimming and Styling</h2>
-                                    <p>From breed-specific trims to stylish haircuts, our professional groomers ensure
-                                        your pets look
-                                        their best. Whether you want a classic cut or a trendy style, we provide precise
-                                        hair trimming
-                                        tailored to your pet’s breed, coat type, and personality.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Nail Clipping and Paw Care</h2>
-                                    <p>Overgrown nails can be uncomfortable and may even lead to health issues for your
-                                        pets. At
-                                        PetCozi, we carefully trim your pet’s nails and take care of their paw pads,
-                                        ensuring comfort and
-                                        safety while maintaining their natural grace and movement.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Ear Cleaning</h2>
-                                    <p>Proper ear hygiene is crucial for preventing infections and discomfort. Our team
-                                        uses gentle
-                                        cleaning techniques to remove wax and debris while ensuring your pet’s ears
-                                        remain healthy
-                                        and irritation-free.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Dental Care</h2>
-                                    <p>A healthy mouth is essential for your pet’s overall well-being. We provide basic
-                                        dental care,
-                                        including teeth cleaning and oral hygiene guidance, to help prevent bad breath,
-                                        plaque buildup,
-                                        and gum diseases.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>De-shedding and Coat Treatments</h2>
-                                    <p>For pets that shed heavily, our de-shedding treatments remove loose hair and
-                                        reduce shedding
-                                        significantly. Additionally, our coat treatments help maintain softness, shine,
-                                        and manageability.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="questions">
-                            <h1>Why Choose PetCozi for Pet Grooming in Dilsukhnagar</h1>
-                            <div class="line"></div>
-                            <p class="open-para">Choosing the right grooming service is essential for your pet’s comfort
-                                and safety, and at
-                                PetCozi, we take pride in our commitment to quality, professionalism, and care. Our team
-                                consists of experienced groomers who are well-versed in handling different breeds and
-                                grooming techniques, ensuring that every pet is treated with patience and expertise. We
-                                maintain a calm and friendly environment that minimizes stress and anxiety during
-                                grooming
-                                sessions, making each visit a positive experience for your furry friend. At PetCozi, we
-                                use only
-                                high-quality, safe, and eco-friendly grooming products that are gentle on your pet’s
-                                skin and
-                                coat. Understanding that every pet is unique, we provide customized grooming plans
-                                tailored to
-                                their breed, age, coat type, and specific health needs. Moreover, our services are
-                                competitively
-                                priced, with flexible packages designed to keep your pets looking their best while
-                                remaining
-                                affordable for pet owners in Dilsukhnagar, Hyderabad.</p>
-
-                            <h1>Benefits of Regular Pet Grooming</h1>
-                            <div class="line"></div>
-                            <p class="open-para">
-                                Regular grooming at PetCozi not only keeps your pets looking beautiful but also promotes
-                                their
-                                health and happiness. Here are some benefits of regular grooming:
-                            </p>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Healthy Skin and Coat:</strong> Regular brushing and grooming remove
-                                        dirt, tangles, and dead
-                                        hair while stimulating natural oils for a shiny coat.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Early Detection of Health Issues: </strong> Grooming allows us to notice
-                                        skin problems,
-                                        infections, or abnormalities early, helping in timely treatment.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Reduced Shedding:</strong> Routine grooming minimizes shedding around
-                                        your home and
-                                        keeps your pet’s coat manageable.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Better Hygiene:</strong> Clean pets are less prone to bad odors, fleas,
-                                        and infections.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Enhanced Bonding:</strong> Grooming sessions strengthen the bond between
-                                        pets and their
-                                        owners, as pets enjoy being pampered and cared for.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="questions">
-                            <h1>Grooming Tips for Pet Owners</h1>
-                            <div class="line"></div>
-                            <p class="open-para">While professional grooming is essential, maintaining your pet’s
-                                hygiene at home is equally
-                                important. Here are a few tips for pet owners:</p>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Brush Regularly:</strong> Brush your pet’s coat according to its type to
-                                        prevent matting and
-                                        tangling.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Monitor Skin Health: </strong>Check for rashes, bumps, or unusual changes
-                                        in your pet’s skin.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Keep Nails Trimmed:</strong> Overgrown nails can cause discomfort and
-                                        affect your pet’s
-                                        walking posture.</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Clean Ears and Teeth:</strong> Regularly clean your pet’s ears and brush
-                                        their teeth to maintain
-                                        hygiene and prevent infections.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p><strong>Schedule Regular Grooming:</strong> Professional grooming at regular
-                                        intervals ensures your
-                                        pet remains healthy, happy, and clean.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="questions">
-                            <h2>Visit PetCozi – The Best Pet Grooming in Dilsukhnagar, Hyderabad</h2>
-                            <div class="line"></div>
-                            <p class="open-para">Whether you are looking for a simple bath, a stylish haircut, or a
-                                complete grooming package,
-                                <b> PetCozi in Dilsukhnagar </b>is your trusted partner. Our professional team,
-                                state-of-the-art
-                                facilities, and love for animals make us the preferred choice for pet owners in
-                                Hyderabad.
-                            </p>
-
-                            <p class="open-para">
-                                Give your pets the care and attention they deserve. Visit <b> PetCozi today </b> and let
-                                us make your
-                                furry friends look and feel their best!
-                            </p>
-
-                        </div>
-
-                        <div class="questions">
-                            <h1>Our Service Locations </h1>
-                            <div class="line"></div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Dilsukhnagar</p>
-                                </div>
-                            </div>
-                            <a href="pet-grooming-Ibrahim-bagh.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Ibrahim Bagh</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Peerzadiguda</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Vaishalinagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Malakpet Colony</p>
-                                </div>
-                            </div>
-                            <a href="pet-grooming-saroornagar.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Saroornagar</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-nacharam.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Nacharam</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Keshogiri</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Stn Kachiguda</p>
-                                </div>
-                            </div>
-                            <a href="pet-grooming-kanchanbagh.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Kanchanbagh</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-vanastalipuram.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Vanasthalipuram</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Padmaraonagar</p>
-                                </div>
-                            </div>
-                            <a href="pet-grooming-bahadurpura.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Bahadurpura</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-lb-nagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In L B Nagar</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-mansoorabad.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Mansoorabad</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-nallakunta.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Nallakunta</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-himayathnagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Himayathnagar</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-saidabad-colony.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Saidabad Colony</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-fatehdarwaza.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Fatehdarwaza</p>
-                                </div>
-                            </a>
-                            <a href="pet-grooming-tarnaka.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Grooming Services In Tarnaka</p>
-                                </div>
-                            </a>
-
-                            <!-- <ul style="list-style: disc; padding-left: 20px; line-height: 1.8; margin-top: 10px;">
-                                <li>Pet Grooming Services In Dilsukhnagar</li>
-                                <li>Pet Grooming Services In Ibrahim Bagh</li>
-                                <li>Pet Grooming Services In Peerzadiguda</li>
-                                <li>Pet Grooming Services In Vaishalinagar</li>
-                                <li>Pet Grooming Services In Malakpet Colony</li>
-                                <li>Pet Grooming Services In Saroornagar</li>
-                                <li>Pet Grooming Services In Nacharam</li>
-                                <li>Pet Grooming Services In Keshogiri</li>
-                                <li>Pet Grooming Services In Stn Kachiguda</li>
-                                <li>Pet Grooming Services In Kanchanbagh</li>
-                                <li>Pet Grooming Services In Vanastalipuram</li>
-                                <li>Pet Grooming Services In Padmaraonagar</li>
-                                <li>Pet Grooming Services In Bahadurpura</li>
-                                <li>Pet Grooming Services In L B Nagar</li>
-                                <li>Pet Grooming Services In Mansoorabad</li>
-                                <li>Pet Grooming Services In Nallakunta</li>
-                                <li>Pet Grooming Services In Himayathnagar</li>
-                                <li>Pet Grooming Services In Saidabad Colony</li>
-                                <li>Pet Grooming Services In Fatehdarwaza</li>
-                                <li>Pet Grooming Services In Tarnaka</li>
-                            </ul> -->
-                        </div>
-
-                    </div>
+                <div class="nav__mobile__menu" id="nav-menu">
+                    <ul class="nav__links" id="nav-links">
+                        <li><a href="#home"><i class="ri-home-line"></i> Home</a></li>
+                        <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                        <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                        <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                    </ul>
                 </div>
             </div>
-        </main>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Services</h1>
+        <div class="hero-line"></div>
+    </section>
+
+    <!-- Service Tabs Navigation -->
+    <div class="service-tabs">
+        <a href="#" class="tab-item tab-grooming active" data-target="grooming-content">Grooming</a>
+        <a href="#" class="tab-item tab-boarding" data-target="boarding-content">Boarding</a>
+        <a href="#" class="tab-item tab-food" data-target="food-content">Food Delivery</a>
     </div>
 
+    <!-- Main Content -->
+    <main class="container">
 
+        <!-- Grooming Content (Active by default) -->
+        <div id="grooming-content" class="service-content active">
+            <!-- Section 1: What is Grooming -->
+            <section>
+                <h2 class="section-title">What is Grooming</h2>
+                <div class="paw-text-wrapper">
+                    <span class="paw-icon">🐾</span>
+                    <p class="content-text-p">
+                        Pet grooming is the essential hygienic care and maintenance of a domesticated animal, encompassing
+                        both their physical appearance and overall well-being. It involves a routine of tasks such as
+                        brushing
+                        and combing to remove dead hair and prevent painful matting, bathing with pet-safe products,
+                        trimming
+                        overgrown nails to prevent joint and walking issues, and cleaning ears and teeth to ward off
+                        infections.
+                        Beyond simply keeping an animal looking and smelling its best, regular grooming—whether done at home
+                        or by a professional—is a vital part of preventative healthcare. It ensures the pet remains
+                        comfortable
+                        and clean, while allowing owners and groomers to regularly check for early signs of skin conditions,
+                        lumps, or parasites that might otherwise go unnoticed beneath a thick coat.
+                    </p>
+                </div>
+            </section>
+
+            <div class="center-box">
+                <a href="#" class="btn-primary">Book Grooming</a>
+            </div>
+
+            <!-- Section 2: PetCozi Services -->
+            <section>
+                <h2 class="section-title-s">PetCozi Grooming Services</h2>
+                <div class="content-text">
+                    <p>We offer a wide range of grooming services tailored to meet the unique needs of your pets. Whether
+                        you have a small dog, a large breed, or a playful cat, PetCozi provides personalized grooming
+                        solutions that include:</p>
+                    <ul class="paw-list">
+                        <li><strong class="section-title-p">Bathing and Shampooing:</strong>
+                            <p>Our bathing services use high-quality, pet-friendly
+                                shampoos that are gentle on your pet’s skin and coat. We offer specialized treatments for
+                                pets
+                                with sensitive skin, allergies, or skin conditions.</p>
+                        </li>
+                        <li><strong class="section-title-p">Hair Trimming and Styling:</strong>
+                            <p> From breed-specific trims to stylish haircuts, our
+                                professional groomers ensure your pets look their best. Whether you want a classic cut or a
+                                trendy style, we provide precise hair trimming tailored to your pet’s breed, coat type, and
+                                personality.</p>
+                        </li>
+                        <li><strong class="section-title-p">Nail Clipping and Paw Care:</strong>
+                            <p> Overgrown nails can be uncomfortable and may even
+                                lead to health issues for your pets. At PetCozi, we carefully trim your pet’s nails and take
+                                care of their paw pads, ensuring comfort and safety while maintaining their natural grace
+                                and
+                                movement.
+                        </li>
+                        <li><strong class="section-title-p">Ear Cleaning:</strong>
+                            <p> Proper ear hygiene is crucial for preventing infections and
+                                discomfort. Our team uses gentle cleaning techniques to remove wax and debris while ensuring
+                                your pet’s ears remain healthy and irritation-free.</p>
+                        </li>
+                        <li><strong class="section-title-p">Dental Care:</strong>
+                            <p> A healthy mouth is essential for your pet’s overall well-being. We
+                                provide basic dental care, including teeth cleaning and oral hygiene guidance, to help
+                                prevent
+                                bad breath, plaque buildup, and gum diseases.</p>
+                        </li>
+                        <li><strong class="section-title-p">De-shedding and Coat Treatments:</strong>
+                            <p> For pets that shed heavily, our de-shedding
+                                treatments remove loose hair and reduce shedding significantly. Additionally, our coat
+                                treatments help maintain softness, shine, and manageability.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Benefits -->
+                <section>
+                    <h2 class="section-title-s">Benefits of Regular Pet Grooming</h2>
+                    <div class="content-text">
+                        <p>Regular grooming at PetCozi not only keeps your pets looking beautiful but also promotes their
+                            health
+                            and happiness. Here are some benefits of regular grooming:</p>
+                        <ul class="paw-list">
+                            <li><strong class="section-title-p">Healthy Skin and Coat:</strong>
+                                Regular brushing and grooming remove dirt, tangles,
+                                and
+                                dead hair while stimulating natural oils for a shiny coat.
+                            <li>
+                            <li><strong class="section-title-p">Early Detection of Health Issues:</strong>
+                                Grooming allows us to notice skin
+                                problems,
+                                infections, or abnormalities early, helping in timely treatment.
+                            </li>
+                            <li><strong class="section-title-p">Reduced Shedding:</strong>
+                                Routine grooming minimizes shedding around your home and
+                                keeps your pet’s coat manageable.
+                            </li>
+                            <li><strong class="section-title-p">Better Hygiene:</strong>
+                                Clean pets are less prone to bad odors, fleas, and
+                                infections.
+                            </li>
+                            <li><strong class="section-title-p">Enhanced Bonding:</strong>
+                                Grooming sessions strengthen the bond between pets and
+                                their
+                                owners, as pets enjoy being pampered and cared for.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 4: Tips -->
+                <section>
+                    <h2 class="section-title-s">Grooming Tips for Pet Owners</h2>
+                    <div class="content-text">
+                        <p>While professional grooming is essential, maintaining your pet’s hygiene at home is equally
+                            important. Here are a few tips for pet owners:</p>
+                        <ul class="paw-list">
+                            <li><strong class="section-title-p">Brush Regularly:</strong>
+                                Brush your pet’s coat according to its type to prevent
+                                matting
+                                and tangling.
+                            </li>
+                            <li><strong class="section-title-p">Monitor Skin Health:</strong>
+                                Check for rashes, bumps, or unusual changes in your
+                                pet’s
+                                skin.
+                            </li>
+                            <li><strong class="section-title-p">Keep Nails Trimmed:</strong>
+                                Overgrown nails can cause discomfort and affect your
+                                pet’s
+                                walking posture.
+                            </li>
+                            <li><strong class="section-title-p">Clean Ears and Teeth:</strong>
+                                Regularly clean your pet’s ears and brush their teeth
+                                to
+                                maintain hygiene and prevent infections.
+                            </li>
+                            <li><strong class="section-title-p">Schedule Regular Grooming:</strong>
+                                Professional grooming at regular intervals
+                                ensures
+                                your pet remains healthy, happy, and clean.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 5: Locations -->
+                <section>
+                    <h2 class="section-title-location" style="width: 100%; text-align: center;">Our Grooming Service
+                        Locations</h2>
+                    <div class="locations-grid">
+                        <div class="location-item">Dilsukhnagar</div>
+                        <div class="location-item">Ibrahim Bagh</div>
+                        <div class="location-item">Vaishalinagar</div>
+                        <div class="location-item">Nacharam</div>
+                        <div class="location-item">Kanchanbagh</div>
+                        <div class="location-item">Bahadurpura</div>
+                        <div class="location-item">Nallakunta</div>
+                        <div class="location-item">Peerzadiguda</div>
+                        <div class="location-item">Malakpet Colony</div>
+                        <div class="location-item">Keshogiri</div>
+                        <div class="location-item">Saroornagar</div>
+                        <div class="location-item">Vanasthalipuram</div>
+                        <div class="location-item">Stn Kachiguda</div>
+                        <div class="location-item">Padmaraonagar</div>
+                        <div class="location-item">LB Nagar</div>
+                        <div class="location-item">Mansoorabad</div>
+                        <div class="location-item">Himayathnagar</div>
+                        <div class="location-item">Saidabad Colony</div>
+                    </div>
+                </section>
+        </div>
+
+        <!-- Boarding Content (Hidden by default) -->
+        <div id="boarding-content" class="service-content">
+            <!-- Duplicate Content for Boarding (As requested: "same content... I will change later") -->
+            <section>
+                <h2 class="section-title">What is Boarding</h2>
+                <div class="paw-text-wrapper">
+                    <span class="paw-icon">🐾</span>
+                    <p class="content-text-p">
+                        Pet boarding is the essential hygienic care and maintenance of a domesticated animal, encompassing
+                        both their physical appearance and overall well-being. It involves a routine of tasks such as
+                        brushing and combing to remove dead hair and prevent painful matting, bathing with pet-safe products,
+                        trimming overgrown nails to prevent joint and walking issues, and cleaning ears and teeth to ward off infections.
+                        (Note: This is duplicate content for demonstration).
+                    </p>
+                </div>
+            </section>
+
+            <div class="center-box">
+                <a href="#" class="btn-primary">Book Boarding</a>
+            </div>
+
+            <section>
+                <h2 class="section-title-s">PetCozi Boarding Services</h2>
+                <div class="content-text">
+                    <p>We offer a wide range of boarding services tailored to meet the unique needs of your pets. Whether
+                        you have a small dog, a large breed, or a playful cat, PetCozi provides personalized boarding
+                        solutions that include:</p>
+                    <ul class="paw-list">
+                        <li><strong class="section-title-p">Service 1:</strong><p>Description...</p></li>
+                        <li><strong class="section-title-p">Service 2:</strong><p>Description...</p></li>
+                    </ul>
+                </div>
+            </section>
+             <!-- Added Location Section for consistency -->
+             <section>
+                    <h2 class="section-title-location" style="width: 100%; text-align: center;">Our Boarding Service
+                        Locations</h2>
+                    <div class="locations-grid">
+                        <div class="location-item">Dilsukhnagar</div>
+                        <div class="location-item">Ibrahim Bagh</div>
+                        <div class="location-item">Vaishalinagar</div>
+                        <div class="location-item">Nacharam</div>
+                        <div class="location-item">Kanchanbagh</div>
+                        <div class="location-item">Bahadurpura</div>
+                    </div>
+                </section>
+        </div>
+
+        <!-- Food Delivery Content (Hidden by default) -->
+        <div id="food-content" class="service-content">
+            <!-- Duplicate Content for Food Delivery (As requested: "same content... I will change later") -->
+            <section>
+                <h2 class="section-title">What is Food Delivery</h2>
+                <div class="paw-text-wrapper">
+                    <span class="paw-icon">🐾</span>
+                    <p class="content-text-p">
+                        Pet food delivery is the essential hygienic care and maintenance of a domesticated animal, encompassing
+                        both their physical appearance and overall well-being. (Note: This is duplicate content for demonstration).
+                    </p>
+                </div>
+            </section>
+
+            <div class="center-box">
+                <a href="#" class="btn-primary">Order Food</a>
+            </div>
+
+            <section>
+                <h2 class="section-title-s">PetCozi Food Delivery Services</h2>
+                <div class="content-text">
+                    <p>We offer a wide range of food delivery services tailored to meet the unique needs of your pets.</p>
+                    <ul class="paw-list">
+                        <li><strong class="section-title-p">Food Item 1:</strong><p>Description...</p></li>
+                        <li><strong class="section-title-p">Food Item 2:</strong><p>Description...</p></li>
+                    </ul>
+                </div>
+            </section>
+             <!-- Added Location Section for consistency -->
+             <section>
+                    <h2 class="section-title-location" style="width: 100%; text-align: center;">Our Food Delivery Locations</h2>
+                    <div class="locations-grid">
+                        <div class="location-item">Dilsukhnagar</div>
+                        <div class="location-item">Ibrahim Bagh</div>
+                    </div>
+                </section>
+        </div>
+
+    </main>
+
+    <a href="#" class="back-to-top" title="Back to Top">↑</a>
 
     <script>
-        const fabContainer = document.getElementById("fabContainer");
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const navMenu = document.getElementById("nav-menu");
 
-        fabContainer.addEventListener("click", () => {
-            fabContainer.classList.toggle("active");
+        menuBtn.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
         });
 
-        // Optional: close when clicking outside
-        document.addEventListener("click", (e) => {
-            if (!fabContainer.contains(e.target)) {
-                fabContainer.classList.remove("active");
-            }
+        // Close menu when clicking a link (optional UX improvement)
+        const navLinks = document.querySelectorAll(".nav__links a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+            });
+        });
+
+
+        // 2. Tab Switching Logic
+        const tabs = document.querySelectorAll(".tab-item");
+        const contents = document.querySelectorAll(".service-content");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default anchor jump
+
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove("active"));
+
+                // Add active class to clicked tab
+                tab.classList.add("active");
+
+                // Hide all content sections
+                contents.forEach(content => content.classList.remove("active"));
+
+                // Show the specific content section
+                const targetId = tab.getAttribute("data-target");
+                const targetContent = document.getElementById(targetId);
+                if(targetContent) {
+                    targetContent.classList.add("active");
+                }
+                
+                // REMOVED: Automatic scroll logic
+                // The page will now stay at the current scroll position.
+            });
         });
     </script>
-
 
 </body>
 
