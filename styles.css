@@ -9,7 +9,7 @@
   --secondary-dark: #1a1a1a;
   --text-dark: #000000;
   --text-light: #333333;
-  --background-light: #fffee6;
+  --background-light: #ffffff;
   --white: #ffffff;
   --transition-speed: 0.3s;
   --border-radius: 12px;
@@ -78,8 +78,8 @@ nav {
   left: 0;
   z-index: 1000;
   backdrop-filter: blur(15px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: var(--secondary-color);
+  box-shadow: none;
+  background: #000;
 }
 .nav__header {
   display: flex;
@@ -110,6 +110,7 @@ nav {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
+  font-size: 18px;
   position: relative;
   transition: color 0.3s ease;
 }
@@ -136,7 +137,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: rgba(44, 62, 80, 0.9);
+    background: #000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   .logo img {
@@ -158,7 +159,7 @@ nav {
     right: -80%; /* Initially hidden */
     width: 70%; /* Menu takes 70% of the screen width */
     height: 100vh;
-    background: rgba(44, 62, 80, 0.95);
+    background: #000;
     backdrop-filter: blur(10px); /* Adds a subtle blur effect */
     transition: right 0.3s ease-in-out;
     z-index: 1001;
@@ -663,20 +664,43 @@ nav {
   .services__header h2 {
     font-size: 2rem;
   }
+
   .services__grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0;
     gap: 1.5rem;
   }
   
   .services__card {
-    height: 350px;
+    height: auto;
+    min-height: 330px;
   }
   
   .services__card-content {
     padding: 1.5rem;
+    transform: translateY(0);
   }
   
   .services__card-content h4 {
     font-size: 1.5rem;
+  }
+
+  .services__icon,
+  .services__card-content h4,
+  .services__card-content p,
+  .services__btn {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .services__btn {
+    margin-top: 0.5rem;
+  }
+
+  .btn-2 {
+    margin-left: 0;
   }
 }
 @media screen and (max-width: 400px){
@@ -1854,27 +1878,9 @@ footer.animate .footer__col {
   --brand-yellow: #fff200;
 }
 
-nav {
-  background: #000;
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
 .nav__header {
-  max-width: 1240px;
-  height: 76px;
+  height: 82px;
   padding: 0 24px;
-}
-
-.logo img {
-  width: 150px;
-  border-radius: 0;
-}
-
-.nav__links a {
-  color: var(--brand-yellow);
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .header {

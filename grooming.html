@@ -22,7 +22,9 @@
             --text-gray: rgba(0, 0, 0, 0.5);
             --bg-light-gray: #D9D9D9;
             --bg-white: #FFFFFF;
-            
+            --primary-color: #fff200;
+            --primary-light: #fffb99;
+            --white: #ffffff;
         }
 
         * {
@@ -32,7 +34,7 @@
         }
 
         body {
-            font-family:'Montserrat',sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.5;
             overflow-x: hidden;
             position: relative;
@@ -47,12 +49,12 @@
             width: 100%;
             height: 100%;
             background: url("/assets/bg-img.png") repeat center;
-            opacity: 0.08; /* Changed from 0.19 to 0.08 */
+            opacity: 0.12;
             z-index: -1;
         }
-        
+
         p {
-            color: #000000; 
+            color: #000000;
         }
 
 
@@ -64,7 +66,7 @@
             background: var(--text-black);
             z-index: 1000;
             padding: 0 80px;
-            height: 100px;
+            height: 80px;
             display: flex;
             align-items: center;
         }
@@ -81,45 +83,205 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            height: 80px;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            box-shadow: none;
+            background: #000;
+        }
+
+        .nav__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .logo img {
-            height: 80px;
-            width: auto;
+            width: 150px;
+            border-radius: 50%;
         }
 
         .nav__menu__btn {
             display: none;
-            color: var(--primary-yellow);
-            font-size: 24px;
+            color: var(--white);
+            font-size: 1.5rem;
             cursor: pointer;
-        }
-
-        .nav__mobile__menu {
-            display: flex;
         }
 
         .nav__links {
             display: flex;
-            list-style: none;
-            gap: 40px;
+            align-items: center;
+            gap: 2rem;
         }
 
+
         .nav__links a {
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--primary-yellow);
+            color: var(--primary-color);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: opacity 0.3s;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
         .nav__links a:hover {
-            opacity: 0.8;
+            color: var(--primary-light);
         }
-        
+
+        .nav__links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 550px) {
+
+            .nav__header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                background: rgba(44, 62, 80, 0.9);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .logo img {
+                width: 100px;
+                height: auto;
+            }
+
+            .nav__menu__btn {
+                display: block;
+                font-size: 1.8rem;
+                color: #ffffff;
+                cursor: pointer;
+                z-index: 1002;
+            }
+
+            .nav__mobile__menu {
+                position: fixed;
+                top: 0;
+                right: -80%;
+                /* Initially hidden */
+                width: 70%;
+                /* Menu takes 70% of the screen width */
+                height: 100vh;
+                background: rgba(44, 62, 80, 0.95);
+                backdrop-filter: blur(10px);
+                /* Adds a subtle blur effect */
+                transition: right 0.3s ease-in-out;
+                z-index: 1001;
+                box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+                border-radius: 0 12px 12px 0;
+            }
+
+            .nav__mobile__menu.active {
+                right: 0;
+            }
+
+            .nav__links {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 1.2rem;
+                padding: 1.5rem;
+            }
+
+            .nav__links a::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: #f39c12;
+                transition: width 0.3s ease;
+            }
+
+            .nav__links a:hover::after {
+                width: 100%;
+            }
+
+            .nav__links li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+            }
+
+            .nav__mobile__menu.active .nav__links li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .nav__mobile__menu.active .nav__links li:nth-child(1) {
+                transition-delay: 0.2s;
+            }
+
+            .nav__mobile__menu.active .nav__links li:nth-child(2) {
+                transition-delay: 0.3s;
+            }
+
+            .nav__mobile__menu.active .nav__links li:nth-child(3) {
+                transition-delay: 0.4s;
+            }
+
+            .nav__mobile__menu.active .nav__links li:nth-child(4) {
+                transition-delay: 0.5s;
+            }
+
+            .nav__links a {
+                color: #ffffff;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .nav__links a:hover {
+                color: #f39c12;
+                transform: scale(1.05);
+            }
+
+            .nav__close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                font-size: 1.8rem;
+                color: #ffffff;
+                cursor: pointer;
+            }
+
+            .header {
+                padding-top: 60px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+        }
 
         /* --- Hero Section --- */
         .hero {
@@ -139,38 +301,6 @@
             height: 4px;
             background: var(--accent-yellow);
             margin: 0 auto 30px;
-        }
-
-        /* --- Professional Back Button Style --- */
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background:transparent;
-            color: var(--text-black);
-            padding: 12px 22px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .back-btn:hover {
-            background-color: #FFFFFF;
-            transform: translateX(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .back-btn i {
-            font-size: 18px;
         }
 
         /* --- Service Tabs --- */
@@ -265,10 +395,12 @@
         }
 
         .info p {
-            font-size: 26px; 
-            font-weight: 500; /* Changed from 400 to 500 */
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 for Bright Black look */
             line-height: 1.6;
-            color: #000000; 
+            color: #000000;
             margin-bottom: 30px;
         }
 
@@ -276,7 +408,7 @@
         .questions {
             margin-top: 60px;
         }
-        
+
         .questions h1 {
             font-size: 32px;
             font-weight: 550;
@@ -288,7 +420,7 @@
 
         .questions h2 {
             font-size: 24px;
-            font-weight: 550;
+            font-weight: 500;
             margin-bottom: 15px;
             color: var(--text-black);
         }
@@ -317,11 +449,13 @@
         }
 
         .open-para {
-            font-size: 26px; 
-            font-weight: 500; /* Changed from 400 to 500 */
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 */
             line-height: 1.6;
             margin-bottom: 40px;
-            color: #000000; 
+            color: #000000;
         }
 
         /* Flex Layout for Paw + Text */
@@ -342,20 +476,22 @@
 
         .ques h2 {
             font-size: 24px;
-            font-weight: 550;
+            font-weight: 500;
             color: var(--text-black);
             margin-bottom: 5px;
         }
 
         .ques p {
-            font-size: 26px; 
-            font-weight: 500; /* Changed from 400 to 500 */
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 */
             line-height: 1.5;
             color: #000000;
         }
 
         .ques strong {
-            font-weight: 550;
+            font-weight: 500;
             color: var(--text-black);
         }
 
@@ -370,7 +506,7 @@
             background: var(--btn-yellow);
             color: var(--text-black);
             font-size: 28px;
-            padding: 12px 40px;
+            padding: 12px 36px;
             font-weight: 500;
             border-radius: 8px;
             text-decoration: none;
@@ -439,18 +575,40 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--bg-light-gray);
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #fff89f 0%, #f8f800 50%, #fbd73d 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(0, 0, 0, 0.1);
             font-size: 24px;
-            color: var(--text-black);
+            color: black;
             text-decoration: none;
+            transform: translateY(14px) scale(0.92);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
+            z-index: 1001;
+        }
+
+        .back-to-top.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px) scale(1.06);
+        }
+
+        .back-to-top i {
+            font-size: 28px;
+            line-height: 1;
         }
 
         /* --- Responsive Adjustments --- */
@@ -462,6 +620,7 @@
         }
 
         @media (max-width: 768px) {
+
             /* Header Mobile */
             header {
                 padding: 0 20px;
@@ -479,7 +638,8 @@
             .nav__mobile__menu {
                 display: none;
                 position: absolute;
-                top: 70px; /* Matches header height */
+                top: 70px;
+                /* Matches header height */
                 left: 0;
                 width: 100%;
                 background: var(--text-black);
@@ -501,7 +661,8 @@
 
             /* Hero Mobile */
             .hero {
-                padding: 100px 15px 30px; /* Top padding to clear header and back button */
+                padding: 100px 15px 30px;
+                /* Top padding to clear header and back button */
             }
 
             .hero h1 {
@@ -511,13 +672,6 @@
 
             .hero-line {
                 width: 150px;
-            }
-
-            .back-btn {
-                top: 15px;
-                left: 15px;
-                padding: 8px 16px;
-                font-size: 14px;
             }
 
             /* Tabs Mobile - Stack Vertically */
@@ -532,7 +686,8 @@
             }
 
             .tab-item {
-                position: relative; /* Reset absolute positioning */
+                position: relative;
+                /* Reset absolute positioning */
                 left: 0 !important;
                 top: 0;
                 transform: none;
@@ -540,7 +695,7 @@
                 width: 100%;
                 text-align: center;
             }
-            
+
             .tab-item::after {
                 bottom: -5px;
             }
@@ -560,7 +715,8 @@
             }
 
             .info p {
-                font-size: 18px; /* Optimized for mobile readability */
+                font-size: 18px;
+                /* Optimized for mobile readability */
                 margin-bottom: 20px;
             }
 
@@ -571,10 +727,10 @@
             .questions h1 {
                 font-size: 24px;
             }
-            
+
             /* Fix line width on mobile */
             .questions h1::after {
-                width: 100%; 
+                width: 100%;
             }
 
             .questions h2 {
@@ -608,7 +764,8 @@
 
             /* Grid Mobile */
             .locations-grid {
-                grid-template-columns: 1fr; /* Single column */
+                grid-template-columns: 1fr;
+                /* Single column */
                 gap: 30px;
                 margin-top: 30px;
             }
@@ -628,43 +785,43 @@
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
+                width: 46px;
+                height: 46px;
+            }
+
+            .back-to-top i {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 
 <body>
-
     <header>
-       <nav>
-      <div class="nav__header">
-        <div class="logo">
-          <img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" />
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <i class="ri-menu-line"></i>
-        </div>
-        <div class="nav__mobile__menu">
-          <!-- <div class="nav__content"> -->
-          <ul class="nav__links" id="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
-            <li><a href="#client">Purpose</a></li>
-            <li><a href="#service">Service</a></li>
-          </ul>          
-        </div>
-        <!-- </div> -->
-      </div>
-    </nav>
+        <nav>
+            <div class="nav__header">
+                <div class="logo">
+                    <a href="index.html"><img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+                <div class="nav__mobile__menu">
+                    <!-- <div class="nav__content"> -->
+                    <ul class="nav__links" id="nav-links">
+                        <li><a href="index.html"><i class="ri-home-line"></i> Home</a></li>
+                        <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                        <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
+                        <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                        <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <a href="index.html" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
         <h1>Our Services</h1>
         <div class="hero-line"></div>
     </section>
@@ -683,7 +840,9 @@
         <div id="grooming-content" class="service-content active">
             <div class="content-wrapper">
                 <div class="info">
-                    <h1><bold>Pet Grooming Services In Hyderabad</bold></h1>
+                    <h1>
+                        <bold>Pet Grooming Services In Hyderabad</bold>
+                    </h1>
                     <p>At PetCozi, we understand that your pets are more than just animals—they are cherished family
                         members who deserve love, care, and attention. Located in Dilsukhnagar, Hyderabad, we specialize
                         in comprehensive pet grooming services designed to keep your pets healthy, happy, and looking
@@ -1141,7 +1300,9 @@
 
     </main>
 
-    <a href="#" class="back-to-top" title="Back to Top">↑</a>
+    <a href="#" class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to top">
+        <i class="ri-arrow-up-line" aria-hidden="true"></i>
+    </a>
 
     <script>
         // Mobile Menu Toggle
@@ -1172,6 +1333,25 @@
                 }
             });
         });
+
+        // Back to Top visibility + smooth scroll
+        const backToTopBtn = document.getElementById("back-to-top");
+        const toggleBackToTop = () => {
+            if (window.scrollY > 220) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        };
+
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+
+        backToTopBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        toggleBackToTop();
     </script>
 
 </body>
