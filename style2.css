@@ -370,8 +370,8 @@ nav {
     .heading {
         display: flex;
         justify-content: center;
-        border: 1px solid #1F2937;
-        background: #1F2937;
+        border: 1px solid #000000;
+        background: #000000;
         border-radius: 10px;
         width: 100%;
         max-width:1100px

@@ -47,7 +47,7 @@
             width: 100%;
             height: 100%;
             background: url("/assets/bg-img.png") repeat center;
-            opacity: 0.19;
+            opacity: 0.08; /* Changed from 0.19 to 0.08 */
             z-index: -1;
         }
         
@@ -119,6 +119,7 @@
         .nav__links a:hover {
             opacity: 0.8;
         }
+        
 
         /* --- Hero Section --- */
         .hero {
@@ -264,8 +265,8 @@
         }
 
         .info p {
-            font-size: 26px; /* Increased Size */
-            font-weight: 400; /* Changed from 330 to 400 for Bright Black look */
+            font-size: 26px; 
+            font-weight: 500; /* Changed from 400 to 500 */
             line-height: 1.6;
             color: #000000; 
             margin-bottom: 30px;
@@ -275,7 +276,7 @@
         .questions {
             margin-top: 60px;
         }
-
+        
         .questions h1 {
             font-size: 32px;
             font-weight: 550;
@@ -287,7 +288,7 @@
 
         .questions h2 {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 550;
             margin-bottom: 15px;
             color: var(--text-black);
         }
@@ -316,8 +317,8 @@
         }
 
         .open-para {
-            font-size: 26px; /* Increased Size */
-            font-weight: 400; /* Changed from 330 to 400 */
+            font-size: 26px; 
+            font-weight: 500; /* Changed from 400 to 500 */
             line-height: 1.6;
             margin-bottom: 40px;
             color: #000000; 
@@ -341,20 +342,20 @@
 
         .ques h2 {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 550;
             color: var(--text-black);
             margin-bottom: 5px;
         }
 
         .ques p {
-            font-size: 26px; /* Increased Size */
-            font-weight: 400; /* Changed from 330 to 400 */
+            font-size: 26px; 
+            font-weight: 500; /* Changed from 400 to 500 */
             line-height: 1.5;
             color: #000000;
         }
 
         .ques strong {
-            font-weight: 500;
+            font-weight: 550;
             color: var(--text-black);
         }
 
@@ -638,7 +639,7 @@
 <body>
 
     <header>
-        <nav>
+       <nav>
       <div class="nav__header">
         <div class="logo">
           <img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" />
@@ -646,15 +647,17 @@
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
-        <!-- Added ID="nav-menu" here to make JS work -->
-        <div class="nav__mobile__menu" id="nav-menu">
+        <div class="nav__mobile__menu">
+          <!-- <div class="nav__content"> -->
           <ul class="nav__links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
             <li><a href="#client">Purpose</a></li>
             <li><a href="#service">Service</a></li>
           </ul>          
         </div>
+        <!-- </div> -->
       </div>
     </nav>
     </header>
