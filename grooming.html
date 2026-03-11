@@ -153,6 +153,37 @@
             width: 100%;
         }
 
+        /* --- Back Button Styles (Added) --- */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #000000;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 520;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+            margin-top:12px;
+            margin-bottom: 0px; /* Space between button and content */
+        }
+
+        .back-btn:hover {
+            background-color: #FFFFFF;
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn i {
+            font-size: 20px;
+        }
+
         @media screen and (max-width: 550px) {
 
             .nav__header {
@@ -668,6 +699,7 @@
             .hero h1 {
                 font-size: 32px;
                 line-height: 1.2;
+                margin-bottom:10px;
             }
 
             .hero-line {
@@ -792,6 +824,14 @@
             .back-to-top i {
                 font-size: 22px;
             }
+
+            /* Back Button Mobile Adjustment */
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+                margin-bottom: 0px;
+                margin-top:5px;
+            }
         }
     </style>
 </head>
@@ -819,12 +859,16 @@
             </div>
         </nav>
     </header>
-
+  <!-- BACK BUTTON ADDED HERE -->
+        
     <!-- Hero Section -->
+ <div class="hero-container">
+    <a href="index.html" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
     <section class="hero">
         <h1>Our Services</h1>
         <div class="hero-line"></div>
     </section>
+</div>
 
     <!-- Service Tabs Navigation -->
     <div class="service-tabs">
@@ -835,7 +879,8 @@
 
     <!-- Main Content -->
     <main class="container">
-
+        
+      
         <!-- Grooming Content -->
         <div id="grooming-content" class="service-content active">
             <div class="content-wrapper">

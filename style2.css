@@ -372,17 +372,14 @@ nav {
     justify-content: center;
     background: black;
     border-radius: 10px;
-    width: 100%;
-    max-width: 1100px;
-    justify-self: center;
-    margin: 15px;
+    width: 100%; 
+    margin-bottom:20px;
 }
 
 .heading div {
     width: 100%;
-    max-width: 900px;
     color: var(--white);
-    padding: 20px 10px;
+    padding: 20px 0px;
 }
 
 /* .main-heading div h1 {
