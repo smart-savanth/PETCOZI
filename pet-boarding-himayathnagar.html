@@ -14,6 +14,223 @@
     <meta name="description"
         content="PetCozi offers trusted pet boarding services in Himayathnagar. Safe, cozy, and caring environment for your pets while you’re away.">
     <title>Pet Boarding Services In Himayathnagar</title>
+
+    <style>
+        /* Locations Grid */
+        .section-title-location {
+            position: relative;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 550;
+            line-height: 32px;
+            color: #000;
+            text-align: center;
+            width: 100%;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px 80px;
+            margin-top: 50px;
+        }
+
+        .location-item {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 400;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-black);
+            display: block;
+        }
+
+        .location-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+            border-radius: 10px;
+            color: var(--text-black);
+        }
+
+        .location-item::before {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 39px;
+            background: url('/assets/paws-black.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto 8px;
+            background-position: center;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            color: var(--text-black);
+            text-decoration: none;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .locations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Back Button Styles */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 12px;
+            background: transparent;
+            color: #000000;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background-color: #FFFFFF;
+            transform: translateX(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn i {
+            font-size: 18px;
+        }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            
+            /* Adjust main container spacing */
+            .main-cont {
+                margin-top: 80px; /* Space for fixed header */
+            }
+
+            /* Back Button - Switch to relative for better flow on mobile */
+            .back-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 0 15px 20px 15px;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            /* Content Container - Reduce side padding */
+            .img-container .content {
+                padding: 10px 15px;
+            }
+
+            /* Heading Box Adjustments */
+            .heading {
+                width: 100%;
+                padding: 15px;
+                margin: 0 0 20px 0;
+                border-radius: 8px;
+            }
+
+            /* Target main heading specifically for mobile size */
+            .main-heading h1 {
+                font-size: 22px; 
+                line-height: 1.3;
+            }
+
+            /* Paw icon adjustment */
+            .main-heading .paws {
+                width: 30px;
+                height: auto;
+            }
+
+            /* Info Section Typography */
+            .info h1 {
+                font-size: 22px;
+            }
+            
+            .info p {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* Questions Section Typography */
+            .questions h1 {
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            .questions h2 {
+                font-size: 18px;
+            }
+
+            .open-para {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* List Items (Paw + Text) */
+            .ques {
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .ques img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .ques p {
+                font-size: 16px;
+            }
+
+            /* Locations Grid - Single Column */
+            .locations-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .location-item {
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .section-title-location {
+                font-size: 40px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+                line-height: 1.4;
+            }
+
+            /* Book Button */
+            .book-btn a {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -43,16 +260,16 @@
 
         <main>
             <div class="main-cont">
-                <div class="back-btn">
-                    <a href="/index.html#services">
-                        <i class="ri-arrow-drop-left-line"></i>Back</a>
-                </div>
+                <!-- Updated Back Button Code -->
+                <a href="grooming.html#boarding" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
+
                 <div class="img-container">
                     <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
                     <div class="content">
                         
                         <div class="heading">
                             <div class="main-heading">
+                                <!-- Original Structure Restored (No extra class) -->
                                 <div>
                                     <h1>Pet Boarding Services In Himayathnagar</h1>
                                     <img src="/assets/paws.svg" alt="" class="paws">
@@ -100,7 +317,7 @@
                         </div>
 
                         <!-- Floating Button Container -->
-                        <div class="fab-container">
+                        <div class="fab-container" id="fabContainer">
                             <div class="fab" id="mainFab">
                                 <i class="ri-whatsapp-line"></i>
                             </div>
@@ -111,154 +328,19 @@
                             </div>
                         </div>
 
-                        <div class="questions">
-                            <h1>Our Service Locations </h1>
-                            <div class="line"></div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Dilsukhnagar</p>
-                                </div>
+                        <!-- Locations Section Replaced with Bahadurpura Code -->
+                        <section>
+                            <h2 class="section-title-location">Our Boarding Service Locations</h2>
+                            <div class="locations-grid">
+                                <a href="pet-boarding-bahadurpura.html" class="location-item">Bahadurpura</a>
+                                <a href="pet-boarding-himayathnagar.html" class="location-item">Himayathnagar</a>
+                                <a href="pet-boarding-lb-nagar.html" class="location-item">LB Nagar</a>
+                                <a href="pet-boarding-nallakunta.html" class="location-item">Nallakunta</a>
+                                <a href="pet-boarding-padmarao-nagar.html" class="location-item">Padmaraonagar</a>
+                                <a href="pet-boarding-tarnaka.html" class="location-item">Tarnaka</a>
+                                <a href="pet-boarding-vanasthalipuram.html" class="location-item">Vanasthalipuram</a>
                             </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Ibrahim Bagh</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Peerzadiguda</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Vaishalinagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Malakpet Colony</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Saroornagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Nacharam</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Keshogiri</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Stn Kachiguda</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Kanchanbagh</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-vanasthalipuram.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Vanasthalipuram</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-padmarao-nagar.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Padmaraonagar</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-bahadurpura.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Bahadurpura</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-lb-nagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In L B Nagar</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Mansoorabad</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-nallakunta.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Nallakunta</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-himayathnagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Himayathnagar</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Saidabad Colony</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Fatehdarwaza</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-tarnaka.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Tarnaka</p>
-                                </div>
-                            </a>
-
-                            <!-- <ul style="list-style: disc; padding-left: 20px; line-height: 1.8; margin-top: 10px;">
-                                <li>Pet Boarding Services In Dilsukhnagar</li>
-                                <li>Pet Boarding Services In Ibrahim Bagh</li>
-                                <li>Pet Boarding Services In Peerzadiguda</li>
-                                <li>Pet Boarding Services In Vaishalinagar</li>
-                                <li>Pet Boarding Services In Malakpet Colony</li>
-                                <li>Pet Boarding Services In Saroornagar</li>
-                                <li>Pet Boarding Services In Nacharam</li>
-                                <li>Pet Boarding Services In Keshogiri</li>
-                                <li>Pet Boarding Services In Stn Kachiguda</li>
-                                <li>Pet Boarding Services In Kanchanbagh</li>
-                                <li>Pet Boarding Services In Vanastalipuram</li>
-                                <li>Pet Boarding Services In Padmaraonagar</li>
-                                <li>Pet Boarding Services In Bahadurpura</li>
-                                <li>Pet Boarding Services In L B Nagar</li>
-                                <li>Pet Boarding Services In Mansoorabad</li>
-                                <li>Pet Boarding Services In Nallakunta</li>
-                                <li>Pet Boarding Services In Himayathnagar</li>
-                                <li>Pet Boarding Services In Saidabad Colony</li>
-                                <li>Pet Boarding Services In Fatehdarwaza</li>
-                                <li>Pet Boarding Services In Tarnaka</li>
-                            </ul> -->
-                        </div>
+                        </section>
 
                     </div>
                 </div>
