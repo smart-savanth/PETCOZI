@@ -257,6 +257,12 @@ nav {
   object-position: center bottom;
 }
 
+@media (min-width: 981px) {
+  .hero__imageWrap {
+    margin-right: -22px;
+  }
+}
+
 .header__flex,
 .header__card {
   display: none !important;
