@@ -1222,14 +1222,27 @@
         toggleBackToTop();
 
         // Logic to switch tab based on URL hash (e.g., #boarding)
-        window.addEventListener('DOMContentLoaded', () => {
-            if (window.location.hash === '#boarding') {
-                const boardingTab = document.querySelector('.tab-boarding');
-                if (boardingTab) {
-                    boardingTab.click();
-                }
-            }
-        });
+        // Logic to switch tab based on URL hash
+window.addEventListener('DOMContentLoaded', () => {
+
+    const hash = window.location.hash;
+
+    if (hash === '#boarding') {
+        const boardingTab = document.querySelector('.tab-boarding');
+        if (boardingTab) boardingTab.click();
+    }
+
+    else if (hash === '#food') {
+        const foodTab = document.querySelector('.tab-food');
+        if (foodTab) foodTab.click();
+    }
+
+    else if (hash === '#grooming') {
+        const groomingTab = document.querySelector('.tab-grooming');
+        if (groomingTab) groomingTab.click();
+    }
+
+});
     </script>
 
 </body>
