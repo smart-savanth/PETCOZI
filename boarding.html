@@ -4,525 +4,1246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCozi - Our Services</title>
     <link rel="stylesheet" href="style2.css">
+    <!-- Google Font: Closest alternative to Gotham -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Remix Icon for Navbar -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
 
-    <!-- seo meta tags  -->
-    <meta name="keywords" content=" Pet Boarding, Pet Boarding Services In Dilsukhnagar, Pet
-Boarding Services In Hyderabad ">
-    <meta property="og:title" content=" Pet Boarding Services In Dilsukhnagar, Hyderabad" />
-    <meta name="google-site-verification" content="iXtUxJOVhS1z47T5lO-qd55X__uZXmXCyG5tR3SFN-0" />
-    <meta name="description" content="PetCozi in Dilsukhnagar, Hyderabad offers safe, hygienic, and loving pet boarding
-for dogs and cats. Book a comfortable stay for your pet today!">
-    <title>Pet Boarding Services In Dilsukhnagar, Hyderabad</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-yellow: #F8F800;
+            --accent-yellow: #FBD73D;
+            --btn-yellow: #FFF349;
+            --text-black: #000000;
+            --text-gray: rgba(0, 0, 0, 0.5);
+            --bg-light-gray: #D9D9D9;
+            --bg-white: #FFFFFF;
+            --primary-color: #fff200;
+            --primary-light: #fffb99;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Exact Background Image Logic */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("/assets/bg-img.png") repeat center;
+            opacity: 0.10;
+            z-index: -1;
+        }
+
+        p {
+            color: #000000;
+        }
+
+
+        /* --- Back Button Styles (Added) --- */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #000000;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 520;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+            margin-top: 12px;
+            margin-bottom: 0px;
+            /* Space between button and content */
+        }
+
+        .back-btn:hover {
+            background-color: #FFFFFF;
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn i {
+            font-size: 20px;
+        }
+
+        /* --- Navbar Font Override (match Poppins from style2.css) --- */
+        nav,
+        .nav__header,
+        .nav__links,
+        .nav__links a {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 0;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-line {
+            width: 237px;
+            height: 4px;
+            background: var(--accent-yellow);
+            margin: 0 auto 30px;
+        }
+
+        /* --- Service Tabs --- */
+        .service-tabs {
+            position: relative;
+            background: var(--bg-light-gray);
+            width: 100%;
+            height: 70px;
+            margin-top: 10px;
+        }
+
+        .tab-item {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .tab-item.active {
+            color: var(--text-black);
+        }
+
+        .tab-item::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0px;
+            height: 3px;
+            background: #FFCF02;
+            transition: width 0.3s;
+        }
+
+        .tab-item.active::after {
+            width: 76px;
+        }
+
+        .tab-grooming {
+            left: 8.8%;
+        }
+
+        .tab-boarding {
+            left: 44.8%;
+        }
+
+        .tab-food {
+            left: 77.6%;
+        }
+
+        /* --- Main Content Sections --- */
+        .container {
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .service-content {
+            display: none;
+        }
+
+        .service-content.active {
+            display: block;
+        }
+
+        /* --- Styles Matching Previous Code --- */
+
+        .content-wrapper {
+            padding: 0 10px;
+        }
+
+        /* Info Section Styling */
+        .info h1 {
+            font-size: 28px;
+            font-weight: 550;
+            color: var(--text-black);
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .info h2 {
+            font-size: 28px;
+            font-weight: 550;
+            color: var(--text-black);
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        .info p {
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 for Bright Black look */
+            line-height: 1.6;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        /* Questions / List Section Styling */
+        .questions {
+            margin-top: 60px;
+        }
+
+        .questions h1 {
+            font-size: 32px;
+            font-weight: 550;
+            margin-bottom: 15px;
+            color: var(--text-black);
+            position: relative;
+            display: inline-block;
+        }
+
+        .questions h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--text-black);
+        }
+
+        /* Line under H1 (Automatic via CSS) */
+        .questions h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: calc(100% + 120px);
+            height: 4px;
+            background: #000000;
+        }
+
+        /* Manual Line for H2 sections */
+        .questions .line {
+            width: fit-content;
+            height: 4px;
+            background: #D3D3D3;
+            margin: 8px 0 30px;
+        }
+
+        .heading-wrap {
+            display: inline-block;
+        }
+
+        .open-para {
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 */
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #000000;
+        }
+
+        /* Flex Layout for Paw + Text */
+        .ques {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .ques img {
+            width: clamp(24px, 3vw, 48px);
+            height: clamp(24px, 3vw, 48px);
+            object-fit: contain;
+            margin-top: 0px;
+            flex-shrink: 0;
+        }
+
+        .ques h2 {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--text-black);
+            margin-bottom: 5px;
+        }
+
+        .ques p {
+            font-size: 26px;
+            /* Increased Size */
+            font-weight: 400;
+            /* Changed from 330 to 400 */
+            line-height: 1.5;
+            color: #000000;
+        }
+
+        .ques strong {
+            font-weight: 500;
+            color: var(--text-black);
+        }
+
+        /* Button */
+        .book-btn {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .book-btn a {
+            display: inline-block;
+            background: var(--btn-yellow);
+            color: var(--text-black);
+            font-size: 28px;
+            padding: 12px 36px;
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .book-btn a:hover {
+            transform: translateY(-2px);
+            background: #f8d800;
+        }
+
+        /* Locations Grid */
+        .section-title-location {
+            position: relative;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 2.2vw, 32px);
+            font-weight: 500;
+            line-height: 32px;
+            color: #000;
+            text-align: center;
+            width: 100%;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px 80px;
+            margin-top: 50px;
+        }
+
+        .location-item {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 400;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-black);
+            display: block;
+        }
+
+        .location-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+            border-radius: 10px;
+            color: var(--text-black);
+        }
+
+        .location-item::before {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 39px;
+            background: url('/assets/paws-black.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto 8px;
+            background-position: center;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #fff89f 0%, #f8f800 50%, #fbd73d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            color: black;
+            text-decoration: none;
+            transform: translateY(14px) scale(0.92);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
+            z-index: 1001;
+        }
+
+        .back-to-top.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px) scale(1.06);
+        }
+
+        .back-to-top i {
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .locations-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Hero Mobile */
+            .hero {
+                padding: 100px 15px 30px;
+                /* Top padding to clear header and back button */
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                line-height: 1.2;
+                margin-bottom: 10px;
+            }
+
+            .hero-line {
+                width: 150px;
+            }
+
+            /* Tabs Mobile - Stack Vertically */
+            .service-tabs {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+            }
+
+            .tab-item {
+                position: relative;
+                /* Reset absolute positioning */
+                left: 0 !important;
+                top: 0;
+                transform: none;
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .tab-item::after {
+                bottom: -5px;
+            }
+
+            /* Typography Mobile */
+            .container {
+                padding: 40px 15px;
+            }
+
+            .info h1 {
+                font-size: 24px;
+                margin-top: 20px;
+            }
+
+            .info h2 {
+                font-size: 22px;
+            }
+
+            .info p {
+                font-size: 18px;
+                /* Optimized for mobile readability */
+                margin-bottom: 20px;
+            }
+
+            .questions {
+                margin-top: 40px;
+            }
+
+            .questions h1 {
+                font-size: 24px;
+            }
+
+            /* Fix line width on mobile */
+            .questions h1::after {
+                width: 100%;
+            }
+
+            .questions h2 {
+                font-size: 20px;
+            }
+
+            .open-para {
+                font-size: 18px;
+                margin-bottom: 25px;
+            }
+
+            .ques {
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .ques img {
+                width: 24px;
+                height: 24px;
+                margin-top: 2px;
+            }
+
+            .ques h2 {
+                font-size: 18px;
+                margin-bottom: 0;
+            }
+
+            .ques p {
+                font-size: 18px;
+            }
+
+            /* Grid Mobile */
+            .locations-grid {
+                grid-template-columns: 1fr;
+                /* Single column */
+                gap: 30px;
+                margin-top: 30px;
+            }
+
+            .section-title-location {
+                margin-top: 60px;
+                margin-bottom: 40px;
+                font-size: 22px;
+            }
+
+            /* Button Mobile */
+            .book-btn a {
+                font-size: 22px;
+                padding: 10px 30px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 46px;
+                height: 46px;
+            }
+
+            .back-to-top i {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <!-- <nav>
-                <div class="Nav_Header">
-                    <div class="nav-left">
-                        <div class="logo">
-                            <img src="/assets/pixelcut-export (1) copy.png" alt="">
-                        </div>
-                        <ul>
-                            <li><a href="/index.html#home">Home</a></li>
-                            <li><a href="">Products</a></li>
-                            <li><a href="/index.html#service">Services</a></li>
-                            <li><a href="">Blogs</a></li>
-                            <li><a href="/index.html#about">About Us</a></li>
-                            <li><a href="">Contact</a></li>
-                        </ul>
+    <header>
+        <nav>
+            <div class="nav__header">
+                <div class="logo">
+                    <a href="index.html"><img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+                <div class="nav__mobile__menu">
+                    <!-- <div class="nav__content"> -->
+                    <ul class="nav__links" id="nav-links">
+                        <li><a href="index.html"><i class="ri-home-line"></i> Home</a></li>
+                        <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                        <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
+                        <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                        <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- BACK BUTTON ADDED HERE -->
+
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <section class="hero">
+            <h1>Our Services</h1>
+            <div class="hero-line"></div>
+        </section>
+    </div>
+
+    <!-- Service Tabs Navigation -->
+    <div class="service-tabs">
+        <a href="#" class="tab-item tab-grooming active" data-target="grooming-content">Grooming</a>
+        <a href="#" class="tab-item tab-boarding" data-target="boarding-content">Boarding</a>
+        <a href="#" class="tab-item tab-food" data-target="food-content">Food Delivery</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+
+        <!-- Grooming Content -->
+        <div id="grooming-content" class="service-content active">
+            <div class="content-wrapper">
+                <div class="info">
+                    <h1>
+                        <bold>Pet Grooming Services In Hyderabad</bold>
+                    </h1>
+                    <p>At PetCozi, we understand that your pets are more than just animals—they are cherished family
+                        members who deserve love, care, and attention. Located in Dilsukhnagar, Hyderabad, we specialize
+                        in comprehensive pet grooming services designed to keep your pets healthy, happy, and looking
+                        their absolute best. Our mission is to provide top-notch grooming experiences that ensure your
+                        pets not only look great but feel great too.</p>
+
+                    <h2>Why Pet Grooming is Important</h2>
+                    <p>Pet grooming is not just about aesthetics; it is an essential part of maintaining your pet’s
+                        overall health and wellbeing. Regular grooming helps prevent skin infections, reduces shedding,
+                        and keeps your pet’s coat clean and free of tangles. At PetCozi, our grooming services are
+                        designed to cater to both the physical and emotional needs of your pets. Our trained
+                        professionals understand pet behavior and ensure a safe and stress-free grooming environment for
+                        your furry friends.</p>
+                </div>
+
+                <div class="book-btn">
+                    <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Grooming</a>
+                </div>
+
+                <div class="questions">
+                    <div class="heading-wrap">
+                        <h1>Our Pet Grooming Services</h1>
                     </div>
-                    <div class="search-cont">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <i class="ri-search-line"></i>
+                    <p class="open-para">We offer a wide range of grooming services tailored to meet the unique needs of
+                        your pets. Whether you have a small dog, a large breed, or a playful cat, PetCozi provides
+                        personalized grooming solutions that include:</p>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Bathing and Shampooing</h2>
+                            <p>Our bathing services use high-quality, pet-friendly shampoos that are gentle on your
+                                pet’s skin and coat. We offer specialized treatments for pets with sensitive skin,
+                                allergies, or skin conditions. Regular baths at PetCozi not only keep your pet clean but
+                                also promote a healthy and shiny coat.</p>
                         </div>
-                        <div class="nav-icons">
-                            <i class="ri-shopping-cart-2-line"></i>
-                            <i class="ri-heart-line"></i>
-                            <i class="ri-user-3-line"></i>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Hair Trimming and Styling</h2>
+                            <p>From breed-specific trims to stylish haircuts, our professional groomers ensure your pets
+                                look their best. Whether you want a classic cut or a trendy style, we provide precise
+                                hair trimming tailored to your pet’s breed, coat type, and personality.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Nail Clipping and Paw Care</h2>
+                            <p>Overgrown nails can be uncomfortable and may even lead to health issues for your pets. At
+                                PetCozi, we carefully trim your pet’s nails and take care of their paw pads, ensuring
+                                comfort and safety while maintaining their natural grace and movement.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Ear Cleaning</h2>
+                            <p>Proper ear hygiene is crucial for preventing infections and discomfort. Our team uses
+                                gentle cleaning techniques to remove wax and debris while ensuring your pet’s ears
+                                remain healthy and irritation-free.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Dental Care</h2>
+                            <p>A healthy mouth is essential for your pet’s overall well-being. We provide basic dental
+                                care, including teeth cleaning and oral hygiene guidance, to help prevent bad breath,
+                                plaque buildup, and gum diseases.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>De-shedding and Coat Treatments</h2>
+                            <p>For pets that shed heavily, our de-shedding treatments remove loose hair and reduce
+                                shedding significantly. Additionally, our coat treatments help maintain softness, shine,
+                                and manageability.</p>
                         </div>
                     </div>
                 </div>
-            </nav> -->
-            <nav>
-                <div class="nav__header">
-                    <div class="logo">
-                        <img src="/assets/pixelcut-export (1) copy.png" alt="PetCozi Logo" />
-                    </div>
-                    <div class="nav__menu__btn" id="menu-btn">
-                        <i class="ri-menu-line"></i>
-                    </div>
-                    <div class="nav__mobile__menu">
-                        <!-- <div class="nav__content"> -->
-                        <ul class="nav__links" id="nav-links">
-                            <li><a href="./index.html"><i class="ri-home-line"></i> Home</a></li>
-                            <li><a href="./index.html#about"><i class="ri-information-line"></i> About</a></li>
-                            <li><a href="./index.html#client"><i class="ri-user-star-line"></i> Purpose</a></li>
-                            <li><a href="./index.html#service"><i class="ri-service-line"></i> Service</a></li>
-                        </ul>
-                    </div>
-                    <!-- </div> -->
+
+                <div class="questions">
+                    <h1>Why Choose PetCozi for Pet Grooming</h1>
+                    <div class="line"></div>
+                    <p class="open-para">Choosing the right grooming service is essential for your pet’s comfort and
+                        safety, and at PetCozi, we take pride in our commitment to quality, professionalism, and care.
+                        Our team consists of experienced groomers who are well-versed in handling different breeds and
+                        grooming techniques, ensuring that every pet is treated with patience and expertise. We maintain
+                        a calm and friendly environment that minimizes stress and anxiety during grooming sessions,
+                        making each visit a positive experience for your furry friend. At PetCozi, we use only
+                        high-quality, safe, and eco-friendly grooming products that are gentle on your pet’s skin and
+                        coat. Understanding that every pet is unique, we provide customized grooming plans tailored to
+                        their breed, age, coat type, and specific health needs. Moreover, our services are competitively
+                        priced, with flexible packages designed to keep your pets looking their best while remaining
+                        affordable for pet owners in Dilsukhnagar, Hyderabad.</p>
                 </div>
-            </nav>
-        </header>
 
-        <main>
-            <div class="main-cont">
-                <div class="back">
-                    <a href="/index.html#services">
-                        <i class="ri-arrow-drop-left-line"></i>Back</a>
+                <div class="questions">
+                    <h1>Benefits of Regular Pet Grooming</h1>
+
+                    <p class="open-para">Regular grooming at PetCozi not only keeps your pets looking beautiful but also
+                        promotes their health and happiness. Here are some benefits of regular grooming:</p>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Healthy Skin and Coat:</strong> Regular brushing and grooming remove dirt,
+                                tangles, and dead hair while stimulating natural oils for a shiny coat.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Early Detection of Health Issues:</strong> Grooming allows us to notice skin
+                                problems, infections, or abnormalities early, helping in timely treatment.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Reduced Shedding:</strong> Routine grooming minimizes shedding around your home
+                                and keeps your pet’s coat manageable.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Better Hygiene:</strong> Clean pets are less prone to bad odors, fleas, and
+                                infections.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Enhanced Bonding:</strong> Grooming sessions strengthen the bond between pets and
+                                their owners, as pets enjoy being pampered and cared for.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="img-container">
-                    <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
-                    <div class="content">
-                        
-                        <div class="heading">
-                            <div class="main-heading">
-                                <div>
-                                    <h1>Pet Boarding Services In Dilsukhnagar, Hyderabad</h1>
-                                    <img src="/assets/paws.svg" alt="" class="paws">
-                                </div>
-                                <h2>PetCozi in Dilsukhnagar, Hyderabad offers safe, hygienic, and loving pet boarding
-                                    for dogs and cats. Book a comfortable stay for your pet today!</h2>
-                            </div>
+
+                <div class="questions">
+                    <h1>Grooming Tips for Pet Owners</h1>
+
+                    <p class="open-para">While professional grooming is essential, maintaining your pet’s hygiene at
+                        home is equally important. Here are a few tips for pet owners:</p>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Brush Regularly:</strong> Brush your pet’s coat according to its type to prevent
+                                matting and tangling.</p>
                         </div>
+                    </div>
 
-                        <div class="info">
-                            <h1>Pet Boarding Services In Hyderabad</h1>
-                            <p>Are you looking for a safe, hygienic, and loving place to leave your furry friend while
-                                you’re
-                                away? Welcome to PetCozi, your trusted destination for Pet Boarding Services in
-                                Dilsukhnagar, Hyderabad. We understand that pets are not just animals – they’re part of
-                                your
-                                family. That’s why we provide a secure, comfortable, and homely environment where your
-                                pets
-                                can feel loved and cared for, even when you’re not around.
-                            </p>
-
-                            <p>At PetCozi, we make sure every pet receives personal attention, healthy meals, regular
-                                walks,
-                                and lots of affection. Whether you’re going out for a weekend, a business trip, or a
-                                vacation, you
-                                can rest assured knowing your furry companion is in safe hands.</p>
-
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Monitor Skin Health:</strong> Check for rashes, bumps, or unusual changes in your
+                                pet’s skin.</p>
                         </div>
+                    </div>
 
-                        <div class="book-btn">
-                            <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Boarding</a>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Keep Nails Trimmed:</strong> Overgrown nails can cause discomfort and affect your
+                                pet’s walking posture.</p>
                         </div>
+                    </div>
 
-                        <!-- Floating Button Container -->
-                        <div class="fab-container">
-                            <div class="fab" id="mainFab">
-                                <i class="ri-whatsapp-line"></i>
-                            </div>
-                            <div class="fab-options" id="fabOptions">
-                                <a href="tel:+917386930476" class="fab-option">📞 Call Now</a>
-                                <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank" class="fab-option">💬
-                                    Chat Now</a>
-                            </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Clean Ears and Teeth:</strong> Regularly clean your pet’s ears and brush their
+                                teeth to maintain hygiene and prevent infections.</p>
                         </div>
+                    </div>
 
-                        <div class="questions">
-                            <h1>Why Choose PetCozi for Pet Boarding in Dilsukhnagar?</h1>
-                            <div class="line"></div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Safe & Hygienic Environment</h2>
-                                    <p>Pets need space to move, play, and relax. That’s why we offer spacious kennels
-                                        and
-                                        air-conditioned rooms for your pets. Every pet gets a comfortable bed, fresh
-                                        water, and a cozy
-                                        environment that feels like home.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Professional & Trained Staff</h2>
-                                    <p>Our team of experienced caretakers and pet handlers are true animal lovers. They
-                                        understand
-                                        pet behavior and provide attentive care to ensure your pet’s comfort and
-                                        happiness. From
-                                        feeding and grooming to playtime and walks, everything is managed with
-                                        compassion and
-                                        professionalism.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>24/7 Supervision & Veterinary Support</h2>
-                                    <p>We know emergencies can happen anytime. At PetCozi, your pet’s safety is our
-                                        responsibility.
-                                        Our boarding center is under continuous supervision, and we have on-call
-                                        veterinary support
-                                        available 24/7 to handle any health concerns or emergencies immediately.</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <h2>Healthy & Nutritious Meals</h2>
-                                    <p>We serve high-quality, vet-approved meals for all pets. Our diet plans are
-                                        customized based on
-                                        your pet’s age, breed, and dietary requirements. Whether it’s premium pet food
-                                        or your pet’s
-                                        favorite homemade meal, we ensure they eat fresh and stay healthy.</p>
-                                </div>
-                            </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p><strong>Schedule Regular Grooming:</strong> Professional grooming at regular intervals
+                                ensures your pet remains healthy, happy, and clean.</p>
                         </div>
+                    </div>
+                </div>
 
+                <div class="questions">
+                    <h2>Visit PetCozi – The Best Pet Grooming in Dilsukhnagar, Hyderabad</h2>
+                    <div class="line"></div>
+                    <p class="open-para">Whether you are looking for a simple bath, a stylish haircut, or a complete
+                        grooming package, <b> PetCozi in Dilsukhnagar </b>is your trusted partner. Our professional
+                        team, state-of-the-art facilities, and love for animals make us the preferred choice for pet
+                        owners in Hyderabad.</p>
+                    <p class="open-para">Give your pets the care and attention they deserve. Visit <b> PetCozi today
+                        </b> and let us make your furry friends look and feel their best!</p>
+                </div>
 
-                        <div class="questions">
-                            <h1>Dog Boarding Services in Dilsukhnagar</h1>
-                            <div class="line"></div>
-                            <p class="open-para">
-                                At PetCozi, we specialize in Dog Boarding Services in Hyderabad for all breeds and
-                                sizes.
-                                We provide a home-like experience where your dogs can relax, socialize, and play safely.
-                                Each
-                                dog gets plenty of time for outdoor walks, play sessions, and rest. Our facility
-                                includes:
-                            </p>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Clean & spacious kennels</p>
-                                </div>
-                            </div>
+                <!-- Grooming Locations Grid -->
+                <section>
+                    <h2 class="section-title-location">Our Grooming Service Locations</h2>
+                    <div class="locations-grid">
+                        <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
+                        <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
+                        <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
+                        <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
+                        <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
+                        <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
+                        <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
+                        <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
+                        <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
+                        <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad Colony</a>
+                        <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
+                        <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
+                        <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Regular exercise and playtime</p>
-                                </div>
-                            </div>
+        <!-- Boarding Content -->
+        <div id="boarding-content" class="service-content">
+            <div class="content-wrapper">
 
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Personalized feeding schedules</p>
-                                </div>
-                            </div>
+                <div class="info">
+                    <h1>Pet Boarding Services In Hyderabad</h1>
+                    <p>Are you looking for a safe, hygienic, and loving place to leave your furry friend while you’re
+                        away? Welcome to PetCozi, your trusted destination for Pet Boarding Services in Dilsukhnagar,
+                        Hyderabad. We understand that pets are not just animals – they’re part of your family. That’s
+                        why we provide a secure, comfortable, and homely environment where your pets can feel loved and
+                        cared for, even when you’re not around.</p>
+                    <p>At PetCozi, we make sure every pet receives personal attention, healthy meals, regular walks, and
+                        lots of affection. Whether you’re going out for a weekend, a business trip, or a vacation, you
+                        can rest assured knowing your furry companion is in safe hands.</p>
+                </div>
 
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Trained caretakers and dog handlers</p>
-                                </div>
-                            </div>
+                <div class="book-btn">
+                    <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Boarding</a>
+                </div>
 
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Emergency vet care and grooming services</p>
-                                </div>
-                            </div>
-
-                            <p class="open-para">Whether it’s a short stay or a long vacation, your dog will enjoy a
-                                safe and happy environment at
-                                PetCozi.</p>
+                <div class="questions">
+                    <h1>Why Choose PetCozi for Pet Boarding in Dilsukhnagar?</h1>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Safe & Hygienic Environment</h2>
+                            <p>Pets need space to move, play, and relax. That’s why we offer spacious kennels and
+                                air-conditioned rooms for your pets. Every pet gets a comfortable bed, fresh water, and
+                                a cozy environment that feels like home.</p>
                         </div>
+                    </div>
 
-
-                        <div class="questions">
-                            <h1>Cat Boarding Services in Dilsukhnagar</h1>
-                            <div class="line"></div>
-                            <p class="open-para">Cats need a calm, quiet, and comfortable space to feel secure. That’s
-                                why our Cat Boarding in
-                                Dilsukhnagar is designed to provide peace and privacy for your feline companions. Each
-                                cat is
-                                given an individual area with cozy bedding, toys, and a litter box. Our trained staff
-                                ensures your
-                                cat feels comfortable and stress-free throughout the stay.</p>
-
-                            <p class="open-para">
-                                We also provide special care for senior cats or those with medical needs, ensuring they
-                                receive proper medication and care as instructed.
-                            </p>
-
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Professional & Trained Staff</h2>
+                            <p>Our team of experienced caretakers and pet handlers are true animal lovers. They
+                                understand pet behavior and provide attentive care to ensure your pet’s comfort and
+                                happiness. From feeding and grooming to playtime and walks, everything is managed with
+                                compassion and professionalism.</p>
                         </div>
+                    </div>
 
-                        <div class="questions">
-                            <h1>Pet Activities & Playtime</h1>
-                            <div class="line"></div>
-                            <p class="open-para">
-                                We believe pets should enjoy their stay, not just spend time in a kennel. That’s why we
-                                organize
-                                fun activities and play sessions every day to keep your pets active and happy. Our large
-                                play
-                                area allows pets to run, fetch, and interact with caretakers. We also provide:
-                            </p>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Morning and evening walks</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Social playtime for friendly pets</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Toys and games to stimulate their mind</p>
-                                </div>
-                            </div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Comfortable nap times and cuddle sessions</p>
-                                </div>
-                            </div>
-
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>24/7 Supervision & Veterinary Support</h2>
+                            <p>We know emergencies can happen anytime. At PetCozi, your pet’s safety is our
+                                responsibility. Our boarding center is under continuous supervision, and we have on-call
+                                veterinary support available 24/7 to handle any health concerns or emergencies
+                                immediately.</p>
                         </div>
+                    </div>
 
-                        <div class="questions">
-                            <h2>Health & Safety at PetCozi</h2>
-                            <div class="line"></div>
-                            <p class="open-para">We take pet health seriously. Before boarding, we request that pets are
-                                vaccinated and free
-                                from contagious diseases. During their stay, our staff monitors every pet closely for
-                                signs of
-                                discomfort or illness. Regular cleaning, disinfecting, and health checks are part of our
-                                daily
-                                routine.
-                            </p>
-
-                            <p class="open-para">
-                                If your pet requires any medication, we strictly follow your instructions and ensure
-                                timely
-                                administration. In case of an emergency, <b> our on-call veterinarian in
-                                    Dilsukhnagar</b> provides
-                                immediate care.
-                            </p>
-
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <h2>Healthy & Nutritious Meals</h2>
+                            <p>We serve high-quality, vet-approved meals for all pets. Our diet plans are customized
+                                based on your pet’s age, breed, and dietary requirements. Whether it’s premium pet food
+                                or your pet’s favorite homemade meal, we ensure they eat fresh and stay healthy.</p>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="questions">
-                            <h2>Our Promise – Love & Care When You’re Not There</h2>
-                            <div class="line"></div>
-                            <p class="open-para">Leaving your pet behind can be emotional and stressful. At <b>
-                                    PetCozi</b>, we aim to make that
-                                experience worry-free. We treat every pet like our own and ensure they receive the same
-                                affection, care, and attention you give them at home. Our motto is simple — “Love, Care,
-                                and
-                                Comfort for Every Pet.”
-                            </p>
+                <div class="questions">
+                    <h1>Dog Boarding Services in Dilsukhnagar</h1>
+                    <p class="open-para">At PetCozi, we specialize in Dog Boarding Services in Hyderabad for all breeds
+                        and sizes. We provide a home-like experience where your dogs can relax, socialize, and play
+                        safely. Each dog gets plenty of time for outdoor walks, play sessions, and rest. Our facility
+                        includes:</p>
 
-                            <p class="open-para">
-                                We also keep pet parents updated with photos and videos during their pet’s stay so you
-                                can see
-                                how happy and safe they are with us.
-                            </p>
-
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Clean & spacious kennels</p>
                         </div>
-
-                        <div class="questions">
-                            <h2>Why Pet Parents in Hyderabad Trust PetCozi</h2>
-                            <div class="line"></div>
-                            <p class="open-para">Thousands of pet parents across Hyderabad trust PetCozi because we
-                                provide a 100% safe,
-                                secure, and hygienic boarding facility. Our trained and compassionate caretakers ensure
-                                that
-                                every pet receives personalized attention and care. We offer affordable and transparent
-                                pricing,
-                                along with daily updates and communication so you can stay connected with your furry
-                                friend.
-                                With emergency veterinary care available, separate boarding zones for dogs and cats, and
-                                a
-                                stress-free environment filled with love and care, PetCozi has become a trusted second
-                                home
-                                for pets whenever their families are away.
-                            </p>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Regular exercise and playtime</p>
                         </div>
-                        
-                        <div class="questions">
-                            <h1>Our Service Locations </h1>
-                            <div class="line"></div>
-
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Dilsukhnagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Ibrahim Bagh</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Peerzadiguda</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Vaishalinagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Malakpet Colony</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Saroornagar</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Nacharam</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Keshogiri</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Stn Kachiguda</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Kanchanbagh</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-vanasthalipuram.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Vanasthalipuram</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-padmarao-nagar.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Padmaraonagar</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-bahadurpura.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Bahadurpura</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-lb-nagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In L B Nagar</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Mansoorabad</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-nallakunta.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Nallakunta</p>
-                                </div>
-                            </a>
-                            <a href="pet-boarding-himayathnagar.html" class="ques" style="text-decoration: none; color: inherit;font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Himayathnagar</p>
-                                </div>
-                            </a>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Saidabad Colony</p>
-                                </div>
-                            </div>
-                            <div class="ques">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Fatehdarwaza</p>
-                                </div>
-                            </div>
-                            <a href="pet-boarding-tarnaka.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
-                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
-                                <div>
-                                    <p>Pet Boarding Services In Tarnaka</p>
-                                </div>
-                            </a>
-
-                            <!-- <ul style="list-style: disc; padding-left: 20px; line-height: 1.8; margin-top: 10px;">
-                                <li>Pet Boarding Services In Dilsukhnagar</li>
-                                <li>Pet Boarding Services In Ibrahim Bagh</li>
-                                <li>Pet Boarding Services In Peerzadiguda</li>
-                                <li>Pet Boarding Services In Vaishalinagar</li>
-                                <li>Pet Boarding Services In Malakpet Colony</li>
-                                <li>Pet Boarding Services In Saroornagar</li>
-                                <li>Pet Boarding Services In Nacharam</li>
-                                <li>Pet Boarding Services In Keshogiri</li>
-                                <li>Pet Boarding Services In Stn Kachiguda</li>
-                                <li>Pet Boarding Services In Kanchanbagh</li>
-                                <li>Pet Boarding Services In Vanastalipuram</li>
-                                <li>Pet Boarding Services In Padmaraonagar</li>
-                                <li>Pet Boarding Services In Bahadurpura</li>
-                                <li>Pet Boarding Services In L B Nagar</li>
-                                <li>Pet Boarding Services In Mansoorabad</li>
-                                <li>Pet Boarding Services In Nallakunta</li>
-                                <li>Pet Boarding Services In Himayathnagar</li>
-                                <li>Pet Boarding Services In Saidabad Colony</li>
-                                <li>Pet Boarding Services In Fatehdarwaza</li>
-                                <li>Pet Boarding Services In Tarnaka</li>
-                            </ul> -->
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Personalized feeding schedules</p>
                         </div>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Trained caretakers and dog handlers</p>
+                        </div>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Emergency vet care and grooming services</p>
+                        </div>
+                    </div>
 
+                    <p class="open-para">Whether it’s a short stay or a long vacation, your dog will enjoy a safe and
+                        happy environment at PetCozi.</p>
+                </div>
+
+                <div class="questions">
+                    <h1>Cat Boarding Services in Dilsukhnagar</h1>
+                    <p class="open-para">Cats need a calm, quiet, and comfortable space to feel secure. That’s why our
+                        Cat Boarding in Dilsukhnagar is designed to provide peace and privacy for your feline
+                        companions. Each cat is given an individual area with cozy bedding, toys, and a litter box. Our
+                        trained staff ensures your cat feels comfortable and stress-free throughout the stay.</p>
+                    <p class="open-para">We also provide special care for senior cats or those with medical needs,
+                        ensuring they receive proper medication and care as instructed.</p>
+                </div>
+
+                <div class="questions">
+                    <h1>Pet Activities & Playtime</h1>
+                    <p class="open-para">We believe pets should enjoy their stay, not just spend time in a kennel.
+                        That’s why we organize fun activities and play sessions every day to keep your pets active and
+                        happy. Our large play area allows pets to run, fetch, and interact with caretakers. We also
+                        provide:</p>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Morning and evening walks</p>
+                        </div>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Social playtime for friendly pets</p>
+                        </div>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Toys and games to stimulate their mind</p>
+                        </div>
+                    </div>
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="">
+                        <div>
+                            <p>Comfortable nap times and cuddle sessions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions">
+                    <h2>Health & Safety at PetCozi</h2>
+                    <div class="line"></div>
+                    <p class="open-para">We take pet health seriously. Before boarding, we request that pets are
+                        vaccinated and free from contagious diseases. During their stay, our staff monitors every pet
+                        closely for signs of discomfort or illness. Regular cleaning, disinfecting, and health checks
+                        are part of our daily routine.</p>
+                    <p class="open-para">If your pet requires any medication, we strictly follow your instructions and
+                        ensure timely administration. In case of an emergency, <b> our on-call veterinarian in
+                            Dilsukhnagar</b> provides immediate care.</p>
+                </div>
+
+                <div class="questions">
+                    <h2>Our Promise – Love & Care When You’re Not There</h2>
+                    <div class="line"></div>
+                    <p class="open-para">Leaving your pet behind can be emotional and stressful. At <b>PetCozi</b>, we
+                        aim to make that experience worry-free. We treat every pet like our own and ensure they receive
+                        the same affection, care, and attention you give them at home. Our motto is simple — “Love,
+                        Care, and Comfort for Every Pet.”</p>
+                    <p class="open-para">We also keep pet parents updated with photos and videos during their pet’s stay
+                        so you can see how happy and safe they are with us.</p>
+                </div>
+
+                <div class="questions">
+                    <h2>Why Pet Parents in Hyderabad Trust PetCozi</h2>
+                    <div class="line"></div>
+                    <p class="open-para">Thousands of pet parents across Hyderabad trust PetCozi because we provide a
+                        100% safe, secure, and hygienic boarding facility. Our trained and compassionate caretakers
+                        ensure that every pet receives personalized attention and care. We offer affordable and
+                        transparent pricing, along with daily updates and communication so you can stay connected with
+                        your furry friend. With emergency veterinary care available, separate boarding zones for dogs
+                        and cats, and a stress-free environment filled with love and care, PetCozi has become a trusted
+                        second home for pets whenever their families are away.</p>
+                </div>
+
+                <!-- Boarding Locations Grid -->
+                <section>
+                    <h2 class="section-title-location">Our Boarding Service Locations</h2>
+                    <div class="locations-grid">
+                        <a href="pet-boarding-bahadurpura.html" class="location-item">Bahadurpura</a>
+                        <a href="pet-boarding-himayathnagar.html" class="location-item">Himayathnagar</a>
+                        <a href="pet-boarding-lb-nagar.html" class="location-item">LB Nagar</a>
+                        <a href="pet-boarding-nallakunta.html" class="location-item">Nallakunta</a>
+                        <a href="pet-boarding-padmarao-nagar.html" class="location-item">Padmaraonagar</a>
+                        <a href="pet-boarding-tarnaka.html" class="location-item">Tarnaka</a>
+                        <a href="pet-boarding-vanasthalipuram.html" class="location-item">Vanasthalipuram</a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Food Delivery Content -->
+        <div id="food-content" class="service-content">
+            <div class="content-wrapper">
+                <div class="info">
+                    <h1>Pet Food Delivery Services In Dilsukhnagar, Hyderabad</h1>
+                    <p>PetCozi in Dilsukhnagar, Hyderabad offers premium, nutritious, and trusted pet food for dogs and cats. Choose from top brands and ensure your pet enjoys healthy and delicious meals every day!</h2>
+                    <p>Are you searching for healthy, nutritious, and high-quality food for your furry friend? Welcome to PetCozi, your trusted destination for pet food and nutrition in Dilsukhnagar, Hyderabad. We understand that pets are family, which is why we offer a wide range of safe, tasty, and vet-approved food options to keep your pets healthy, happy, and full of energy every day.</p>
+                    <p>At PetCozi, we ensure every pet gets the nutrition and care they deserve. Our range of pet food is made with high-quality ingredients, designed to support your pet’s health, energy, and happiness. Whether it’s daily meals, treats, or special dietary needs, you can trust PetCozi to keep your furry companion healthy, active, and satisfied.</p>
+                </div>
+
+                <div class="book-btn">
+                    <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Order Now</a>
+                </div>
+
+                <div class="questions">
+                    <h1>Why Choose PetCozi for Pet Food Delivery in Dilsukhnagar?</h1>
+                    <div class="line"></div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Wide Range of Trusted Brands</h2>
+                            <p>At PetCozi, we bring together the best pet food brands under one roof. From premium dry kibble to nutritious wet food and healthy treats, we make it easy for you to find what your pet loves—all in one place.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Fresh & Quality-Assured Products</h2>
+                            <p>We ensure that every product listed on PetCozi is genuine and quality-checked. Whether it’s food for puppies, kittens, or senior pets, all items are sourced from trusted suppliers to ensure freshness and safety.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Personalized Recommendations</h2>
+                            <p>Not sure what to buy? Our smart recommendation system helps you pick the right food based on your pet’s breed, age, and dietary needs—making mealtime healthier and simpler.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Convenient Doorstep Delivery</h2>
+                            <p>No more last-minute runs to the store! With PetCozi, you can easily order your pet’s favorite food online and get it delivered right to your doorstep—fresh, fast, and hassle-free.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Safe Packaging & Storage</h2>
+                            <p>Every product is packed safely to preserve freshness and quality. We follow hygienic handling practices and proper storage to ensure your pet’s food remains fresh until it reaches your home.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions">
+                    <h1>Pet Food Marketplace in Dilsukhnagar</h1>
+                    <div class="line"></div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Shop by Brand, Breed & Need</h2>
+                            <p>Discover food from top pet brands like Pedigree, Royal Canin, Drools, Whiskas, and more. Browse by your pet’s specific dietary requirements or favorite flavors.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Affordable Prices & Offers</h2>
+                            <p>Enjoy great deals on your pet’s favorite food. We work with top brands to provide exclusive discounts, combo packs, and offers—so you get the best for less.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Nutrition You Can Trust</h2>
+                            <p>Each product on PetCozi is curated with your pet’s health in mind. We promote balanced, nutritious options that support growth, energy, and overall well-being.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Local Support, Global Brands</h2>
+                            <p>PetCozi connects you to both local suppliers and global pet food brands—ensuring variety and accessibility. Supporting local stores while enjoying world-class quality has never been easier.</p>
+                        </div>
+                    </div>
+
+                    <div class="ques">
+                        <img src="/assets/paws-black.svg" alt="" />
+                        <div>
+                            <h2>Seamless Online Shopping Experience</h2>
+                            <p>Our user-friendly platform makes browsing, comparing, and purchasing effortless. Whether you’re on your phone or computer, buying pet food is now quick, easy, and secure.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
 
+    </main>
+
+    <a href="#" class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to top">
+        <i class="ri-arrow-up-line" aria-hidden="true"></i>
+    </a>
 
     <script>
-        const fabContainer = document.getElementById("fabContainer");
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const navMenu = document.getElementById("nav-menu");
 
-        fabContainer.addEventListener("click", () => {
-            fabContainer.classList.toggle("active");
+        menuBtn.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
         });
 
-        // Optional: close when clicking outside
-        document.addEventListener("click", (e) => {
-            if (!fabContainer.contains(e.target)) {
-                fabContainer.classList.remove("active");
+        // Tab Switching Logic
+        const tabs = document.querySelectorAll(".tab-item");
+        const contents = document.querySelectorAll(".service-content");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                tabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+
+                contents.forEach(content => content.classList.remove("active"));
+
+                const targetId = tab.getAttribute("data-target");
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add("active");
+                }
+            });
+        });
+
+        // Back to Top visibility + smooth scroll
+        const backToTopBtn = document.getElementById("back-to-top");
+        const toggleBackToTop = () => {
+            if (window.scrollY > 220) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
             }
-        });
-    </script>
+        };
 
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+
+        backToTopBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        toggleBackToTop();
+
+        // Logic to switch tab based on URL hash (e.g., #boarding)
+        // Logic to switch tab based on URL hash
+window.addEventListener('DOMContentLoaded', () => {
+
+    const hash = window.location.hash;
+
+    if (hash === '#boarding') {
+        const boardingTab = document.querySelector('.tab-boarding');
+        if (boardingTab) boardingTab.click();
+    }
+
+    else if (hash === '#food') {
+        const foodTab = document.querySelector('.tab-food');
+        if (foodTab) foodTab.click();
+    }
+
+    else if (hash === '#grooming') {
+        const groomingTab = document.querySelector('.tab-grooming');
+        if (groomingTab) groomingTab.click();
+    }
+
+});
+    </script>
 
 </body>
 
