@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- seo meta tags  -->
+    <meta name="keywords" content="Pet Grooming Services In Karmanghat">
+    <meta property="og:title" content="Pet Grooming Services In Karmanghat" />
+    <meta name="google-site-verification" content="iXtUxJOVhS1z47T5lO-qd55X__uZXmXCyG5tR3SFN-0" />
+    <meta name="description"
+        content="PetCozi offers professional pet grooming services in Karmanghat. Safe, hygienic care with expert groomers for a clean, healthy, and happy pet.">
+    <title>Pet Grooming Services In Karmanghat</title>
+</head>
+<style>
+    .main-title {
+        position: relative;
+        padding: 50px;
+        /* to contain absolute positioning */
+    }
+
+    .main-title .paws {
+        position: absolute;
+        top: 0;
+        /* adjust as needed */
+        right: -70px;
+        /* spacing from the text */
+        height: 1.2em;
+        /* adjust size */
+        flex-shrink: 0;
+    }
+
+    /* Locations Grid */
+    .section-title-location {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 60px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(22px, 2.2vw, 32px);
+        font-weight: 550;
+        line-height: 32px;
+        color: #000;
+        text-align: center;
+        width: 100%;
+    }
+
+    .locations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px 80px;
+        margin-top: 50px;
+    }
+
+    .location-item {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        padding: 20px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--text-black);
+        display: block;
+    }
+
+    .location-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+        border-radius: 10px;
+        color: var(--text-black);
+    }
+
+    .location-item::before {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 39px;
+        background: url('/assets/paws-black.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto 8px;
+        background-position: center;
+    }
+
+    /* Back to top */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-light-gray);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        color: var(--text-black);
+        text-decoration: none;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 1024px) {
+        .locations-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Back Button Styles 
+.main-cont {
+    position: relative;
+}*/
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 12px;
+        background: transparent;
+        color: #000000;
+        padding: 10px 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .back-btn:hover {
+        background-color: #FFFFFF;
+        transform: translateX(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn i {
+        font-size: 18px;
+    }
+
+    /* --- MOBILE RESPONSIVE STYLES (ADDED BELOW) --- */
+    @media (max-width: 768px) {
+
+        /* Adjust main container spacing */
+        .main-cont {
+            margin-top: 80px;
+            /* Space for fixed header */
+        }
+
+        /* Back Button - Switch to relative for better flow on mobile */
+        .back-btn {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 0 15px 20px 15px;
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        /* Content Container - Reduce side padding */
+        .img-container .content {
+            padding: 10px 15px;
+        }
+
+        /* Heading Box Adjustments */
+        .heading {
+            width: 100%;
+            padding: 15px;
+            margin: 0 0 20px 0;
+            border-radius: 8px;
+        }
+
+        .main-title {
+            font-size: 22px;
+            /* Smaller font for mobile */
+            line-height: 1.3;
+        }
+
+        /* Paw icon adjustment */
+        .main-title .paws {
+            width: 30px;
+            height: auto;
+            right: -40px;
+            top: 0;
+        }
+
+        /* Info Section Typography */
+        .info h1 {
+            font-size: 22px;
+        }
+
+        .info p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Questions Section Typography */
+        .questions h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .questions h2 {
+            font-size: 18px;
+        }
+
+        .open-para {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* List Items (Paw + Text) */
+        .ques {
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ques img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .ques p {
+            font-size: 16px;
+        }
+
+        /* Locations Grid - Single Column */
+        .locations-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .location-item {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .section-title-location {
+            font-size: 40px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Book Button */
+        .book-btn a {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="nav__header">
+                    <div class="logo">
+                        <a href="index.html"><img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
+                    </div>
+                    <div class="nav__menu__btn" id="menu-btn">
+                        <i class="ri-menu-line"></i>
+                    </div>
+                    <div class="nav__mobile__menu">
+                        <!-- <div class="nav__content"> -->
+                        <ul class="nav__links" id="nav-links">
+                            <li><a href="index.html"><i class="ri-home-line"></i> Home</a></li>
+                            <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                            <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
+                            <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                            <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <main>
+            <div class="main-cont">
+                <a href="services.html#grooming" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
+                <div class="img-container">
+                    <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
+                    <div class="content">
+
+                        <div class="heading">
+                            <div class="main-heading">
+                                <div>
+                                    <h1>Pet Boarding Services In Karmanghat</h1>
+                                    <img src="/assets/paws.svg" alt="" class="paws">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <h1>Pet Grooming Services In Karmanghat</h1>
+                            <p>Keeping your pet clean, healthy, and well-groomed is essential for their overall
+                                well-being. At <strong>PetCozi</strong>, we offer professional and reliable <strong>Pet
+                                    Grooming Services in Karmanghat</strong>, designed to give your furry companions the
+                                care, hygiene, and pampering they deserve. Our expert groomers ensure that every pet
+                                leaves looking fresh, feeling comfortable, and staying healthy.</p>
+                        </div>
+
+                        <div class="book-btn">
+                            <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Grooming</a>
+                        </div>
+
+                        <!-- Floating Button Container -->
+                        <div class="fab-container">
+                            <div class="fab" id="mainFab">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                            <div class="fab-options" id="fabOptions">
+                                <a href="tel:+917386930476" class="fab-option">📞 Call Now</a>
+                                <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank" class="fab-option">💬
+                                    Chat Now</a>
+                            </div>
+                        </div>
+
+                        <div class="questions">
+                            <h1>Professional Grooming for All Pets</h1>
+                            <div class="line"></div>
+                            <p class="open-para">At PetCozi, we understand that each pet has unique grooming needs.
+                                Whether you have a dog or a cat, our trained professionals provide customized grooming
+                                solutions based on breed, coat
+                                type, and skin condition. Our goal is not just to make your pet look good but also to
+                                maintain their hygiene and health.</p>
+                            <p class="open-para">Our grooming experts are experienced in handling pets of all
+                                temperaments, ensuring a calm and stress-free grooming experience.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Complete Grooming Services Under One Roof</h1>
+                            <p class="open-para">We provide a wide range of <strong>pet grooming services in
+                                    Karmanghat</strong> to ensure complete care for your pet. Our services include:</p>
+                            <div class="line"></div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Bathing with premium, pet-safe shampoos</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Hair trimming and breed-specific styling</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Nail clipping and paw care</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Ear cleaning and hygiene maintenance</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Coat brushing and de-shedding treatments</p>
+                                </div>
+                            </div>
+                            <p class="open-para">Regular grooming helps prevent infections, reduces shedding, and keeps
+                                your pet’s coat shiny and healthy.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Safe & Hygienic Environment</h1>
+                            <p class="open-para">At PetCozi, we maintain the highest standards of cleanliness and
+                                hygiene. Our grooming facility in Karmanghat is designed to provide a safe and
+                                comfortable environment for pets.</p>
+                            <div class="line"></div>
+                            <p class="open-para">We ensure:</p>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Clean and sanitized grooming tools</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Use of high-quality grooming products</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Proper handling and care during grooming sessions</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>A stress-free atmosphere for pets</p>
+                                </div>
+                            </div>
+                            <p class="open-para">Your pet’s safety and comfort are always our top priorities.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Experienced & Caring Groomers</h1>
+                            <p class="open-para">Our team consists of skilled and passionate groomers who genuinely love
+                                animals. They handle every pet with patience and care, ensuring a positive grooming
+                                experience. Whether your pet needs a simple bath or a full grooming session, our
+                                professionals deliver excellent results with attention to detail.</p>
+                            <p class="open-para">We also take special care of sensitive pets, making sure they feel relaxed and secure throughout the process.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Benefits of Regular Pet Grooming</h1>
+                            <p class="open-para">Regular grooming is more than just appearance—it plays a vital role in your pet’s health. With our <strong>Pet Grooming Services in Karmanghat</strong>, you can ensure:</p>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Better skin and coat health</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Early detection of skin issues or infections</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Reduced shedding and allergies</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Improved comfort and hygiene</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Enhanced overall well-being</p>
+                                </div>
+                            </div>
+                            <p class="open-para">A well-groomed pet is a happy and healthy pet.</p>
+                        </div>
+                        
+                        <div class="questions">
+                            <h1>Affordable & Convenient Services</h1>
+                            <p class="open-para">At PetCozi, we believe that quality grooming should be accessible to all pet owners. That’s why we offer affordable grooming packages without compromising on service quality. We also ensure timely appointments and a hassle-free experience for both pets and their owners.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Why Choose PetCozi?</h1>
+                            <div class="line"></div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Professional and experienced groomers</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Safe, clean, and pet-friendly environment</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>High-quality grooming products</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Personalized grooming solutions</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Affordable pricing and reliable service</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Book Your Pet’s Grooming Today</h1>
+                            <div class="line"></div>
+                            <p class="open-para">If you are looking for trusted and professional <strong>Pet Grooming Services in Karmanghat</strong>, PetCozi is your go-to destination. Give your pet the care and grooming they deserve with our expert services.</p>
+                            <p class="open-para">Let your pet shine with cleanliness, comfort, and style—only at PetCozi.</p>
+                        </div>
+
+
+                        <section>
+                            <h1 class="section-title-location">
+                                <bold>Our Grooming Service Locations</bold>
+                            </h1>
+                            <div class="locations-grid">
+                                <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
+                                <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
+                                <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
+                                <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
+                                <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
+                                <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
+                                <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
+                                <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
+                                <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
+                                <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad Colony</a>
+                                <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
+                                <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
+                                <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script>
+        const fabContainer = document.getElementById("fabContainer");
+
+        fabContainer.addEventListener("click", () => {
+            fabContainer.classList.toggle("active");
+        });
+
+        // Optional: close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!fabContainer.contains(e.target)) {
+                fabContainer.classList.remove("active");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

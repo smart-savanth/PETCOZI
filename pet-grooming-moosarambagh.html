@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- seo meta tags  -->
+    <meta name="keywords" content="Pet Grooming Services In Moosarambagh">
+    <meta property="og:title" content="Pet Grooming Services In Moosarambagh" />
+    <meta name="google-site-verification" content="iXtUxJOVhS1z47T5lO-qd55X__uZXmXCyG5tR3SFN-0" />
+    <meta name="description"
+        content="PetCozi offers trusted pet boarding with grooming services. Safe, clean, and caring stay for your pets with professional grooming and personal attention.">
+    <title>Pet Grooming Services In Moosarambagh</title>
+</head>
+<style>
+    .main-title {
+        position: relative;
+        padding: 50px;
+        /* to contain absolute positioning */
+    }
+
+    .main-title .paws {
+        position: absolute;
+        top: 0;
+        /* adjust as needed */
+        right: -70px;
+        /* spacing from the text */
+        height: 1.2em;
+        /* adjust size */
+        flex-shrink: 0;
+    }
+
+    /* Locations Grid */
+    .section-title-location {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 60px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(22px, 2.2vw, 32px);
+        font-weight: 550;
+        line-height: 32px;
+        color: #000;
+        text-align: center;
+        width: 100%;
+    }
+
+    .locations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px 80px;
+        margin-top: 50px;
+    }
+
+    .location-item {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        padding: 20px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--text-black);
+        display: block;
+    }
+
+    .location-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+        border-radius: 10px;
+        color: var(--text-black);
+    }
+
+    .location-item::before {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 39px;
+        background: url('/assets/paws-black.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto 8px;
+        background-position: center;
+    }
+
+    /* Back to top */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-light-gray);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        color: var(--text-black);
+        text-decoration: none;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 1024px) {
+        .locations-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Back Button Styles 
+.main-cont {
+    position: relative;
+}*/
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 12px;
+        background: transparent;
+        color: #000000;
+        padding: 10px 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .back-btn:hover {
+        background-color: #FFFFFF;
+        transform: translateX(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn i {
+        font-size: 18px;
+    }
+
+    /* --- MOBILE RESPONSIVE STYLES (ADDED BELOW) --- */
+    @media (max-width: 768px) {
+
+        /* Adjust main container spacing */
+        .main-cont {
+            margin-top: 80px;
+            /* Space for fixed header */
+        }
+
+        /* Back Button - Switch to relative for better flow on mobile */
+        .back-btn {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 0 15px 20px 15px;
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        /* Content Container - Reduce side padding */
+        .img-container .content {
+            padding: 10px 15px;
+        }
+
+        /* Heading Box Adjustments */
+        .heading {
+            width: 100%;
+            padding: 15px;
+            margin: 0 0 20px 0;
+            border-radius: 8px;
+        }
+
+        .main-title {
+            font-size: 22px;
+            /* Smaller font for mobile */
+            line-height: 1.3;
+        }
+
+        /* Paw icon adjustment */
+        .main-title .paws {
+            width: 30px;
+            height: auto;
+            right: -40px;
+            top: 0;
+        }
+
+        /* Info Section Typography */
+        .info h1 {
+            font-size: 22px;
+        }
+
+        .info p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Questions Section Typography */
+        .questions h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .questions h2 {
+            font-size: 18px;
+        }
+
+        .open-para {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* List Items (Paw + Text) */
+        .ques {
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ques img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .ques p {
+            font-size: 16px;
+        }
+
+        /* Locations Grid - Single Column */
+        .locations-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .location-item {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .section-title-location {
+            font-size: 40px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Book Button */
+        .book-btn a {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="nav__header">
+                    <div class="logo">
+                        <a href="index.html"><img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
+                    </div>
+                    <div class="nav__menu__btn" id="menu-btn">
+                        <i class="ri-menu-line"></i>
+                    </div>
+                    <div class="nav__mobile__menu">
+                        <!-- <div class="nav__content"> -->
+                        <ul class="nav__links" id="nav-links">
+                            <li><a href="index.html"><i class="ri-home-line"></i> Home</a></li>
+                            <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                            <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
+                            <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                            <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <main>
+            <div class="main-cont">
+                <a href="services.html#grooming" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
+                <div class="img-container">
+                    <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
+                    <div class="content">
+
+                        <div class="heading">
+                            <div class="main-heading">
+                                <div>
+                                    <h1>Pet Boarding Services In Grooming</h1>
+                                    <img src="/assets/paws.svg" alt="" class="paws">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <h1>Pet Grooming Services In Hyderabad</h1>
+                            <p>When it comes to leaving your beloved pet behind, finding a safe, comfortable, and trustworthy place is every pet owner’s top priority. At <strong>PetCozi</strong>, we understand that your pets are family, and we are committed to providing premium <strong>Pet Boarding Services in Grooming</strong> that ensure your furry companions are not only safe but also well-groomed, happy, and stress-free during their stay.</p>
+                        </div>
+
+                        <div class="book-btn">
+                            <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank">Book Grooming</a>
+                        </div>
+
+                        <!-- Floating Button Container -->
+                        <div class="fab-container">
+                            <div class="fab" id="mainFab">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                            <div class="fab-options" id="fabOptions">
+                                <a href="tel:+917386930476" class="fab-option">📞 Call Now</a>
+                                <a href="https://wa.me/message/XJ5IC4UJVYYRJ1" target="_blank" class="fab-option">💬
+                                    Chat Now</a>
+                            </div>
+                        </div>
+
+                        <div class="questions">
+                            <h1>A Perfect Blend of Boarding & Grooming</h1>
+                            <div class="line"></div>
+                            <p class="open-para">Unlike traditional boarding facilities, PetCozi offers a unique combination of <strong>pet boarding with professional grooming services.</strong> This means your pet doesn’t just stay with us—they receive complete care, including hygiene, cleanliness, and pampering. Whether you’re traveling for work or vacation, your pet will return home clean, fresh, and relaxed.</p>
+                            <p class="open-para">Our expert team ensures that every pet receives personalized attention based on their breed, size, and temperament. From regular brushing to bathing and coat maintenance, we focus on keeping your pet looking and feeling their best.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Comfortable & Safe Environment</h1>
+                            <p class="open-para">At PetCozi, we have designed our facility to provide a <strong>home-like environment</strong> for pets. We understand that new surroundings can be stressful, so we ensure a calm, clean, and pet-friendly space where animals can feel secure.</p>
+                            <div class="line"></div>
+                            <p class="open-para">Our boarding includes:</p>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Spacious and hygienic living areas</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Climate-controlled environment</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Regular cleaning and sanitization</p>
+                                </div>
+                            </div>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>24/7 supervision by trained staff</p>
+                                </div>
+                            </div>
+                            <p class="open-para">Safety is our top priority. We follow strict protocols to ensure every pet stays healthy and protected throughout their stay.</p>
+                        </div>
+
+
+                        <div class="questions">
+                            <h1>Professional Grooming Services</h1>
+                            <p class="open-para">Grooming is an essential part of your pet’s health and well-being. At PetCozi, we offer <strong>professional grooming services during boarding</strong>, so your pet gets complete care under one roof.</p>
+                            <div class="line"></div>
+                            <p class="open-para">Our grooming services include:</p>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Bathing with premium pet-safe products</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Hair trimming and styling</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Nail clipping and ear cleaning</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Coat conditioning and de-shedding</p>
+                                </div>
+                            </div>
+                            <p class="open-para">Regular grooming helps prevent skin infections, reduces shedding, and keeps your pet comfortable and clean.</p>
+                        </div>
+                        
+                        
+                        <div class="questions">
+                            <h1>Personalized Care & Attention</h1>
+                            <p class="open-para">Every pet is unique, and we treat them accordingly. At PetCozi, we take the time to understand your pet’s habits, diet, and special needs. Whether your pet requires medication, a specific diet, or extra playtime, our team ensures all requirements are met.</p>
+                            <div class="line"></div>
+                            <p class="open-para">We also provide:</p>
+
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Regular feeding schedules</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Playtime and exercise routines</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Social interaction (if suitable)</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Updates for pet parents</p>
+                                </div>
+                            </div>
+                            <p class="open-para">Our goal is to make your pet feel loved and cared for, just like at home.</p>
+                        </div>
+                        
+                        
+                        <div class="questions">
+                            <h1>Stress-Free Experience for Pet Owners</h1>
+                            <p class="open-para">Leaving your pet behind can be emotional, but with PetCozi, you can travel with peace of mind. Our <strong>Pet Boarding Services in Grooming</strong> are designed to give both pets and owners a stress-free experience.</p>
+                            <p class="open-para">We maintain complete transparency and keep you informed about your pet’s well-being. Knowing your pet is in safe hands allows you to focus on your work or travel without worry.</p>
+                            
+                        </div>
+                        
+                        
+                        <div class="questions">
+                            <h1>Why Choose PetCozi?</h1>
+                            <div class="line"></div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Experienced and caring staff</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Combined boarding and grooming services</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Clean, safe, and comfortable facility</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Personalized pet care plans</p>
+                                </div>
+                            </div>
+                            <div class="ques">
+                                <img src="/assets/paws-black.svg" alt="" class="paws-black">
+                                <div>
+                                    <p>Affordable and reliable services</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="questions">
+                            <h1>Book Your Pet’s Stay Today</h1>
+                            <div class="line"></div>
+                            <p class="open-para">If you are looking for reliable and professional <strong>Pet Boarding Services in Grooming</strong>, PetCozi is your trusted partner. We go beyond basic boarding to provide a complete care experience that keeps your pet happy, healthy, and well-groomed.</p>
+                            <p class="open-para">Give your pet the comfort they deserve while you’re away. Choose PetCozi—where care meets comfort.</p>
+                        </div>
+
+
+                        <section>
+                            <h1 class="section-title-location">
+                                <bold>Our Grooming Service Locations</bold>
+                            </h1>
+                            <div class="locations-grid">
+                                <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
+                                <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
+                                <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
+                                <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
+                                <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
+                                <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
+                                <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
+                                <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
+                                <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
+                                <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad Colony</a>
+                                <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
+                                <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
+                                <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script>
+        const fabContainer = document.getElementById("fabContainer");
+
+        fabContainer.addEventListener("click", () => {
+            fabContainer.classList.toggle("active");
+        });
+
+        // Optional: close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!fabContainer.contains(e.target)) {
+                fabContainer.classList.remove("active");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
