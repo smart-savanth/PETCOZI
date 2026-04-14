@@ -8,246 +8,254 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
 
     <!-- seo meta tags  -->
-    <meta name="keywords"
-        content="Pet Grooming Services In LB Nagar">
+    <meta name="keywords" content="Pet Grooming Services In LB Nagar">
     <meta property="og:title" content="Pet Grooming Services In LB Nagar" />
     <meta name="google-site-verification" content="iXtUxJOVhS1z47T5lO-qd55X__uZXmXCyG5tR3SFN-0" />
-    <meta name="description" content="PetCozi offers professional pet grooming services in LB Nagar with expert groomers, safe products, and gentle care for dogs and cats. Book now!">
+    <meta name="description"
+        content="PetCozi offers professional pet grooming services in LB Nagar with expert groomers, safe products, and gentle care for dogs and cats. Book now!">
     <title>Pet Grooming Services In LB Nagar</title>
 </head>
 <style>
-.main-title {
-    position: relative;
-    padding:50px; /* to contain absolute positioning */
-}
+    .main-title {
+        position: relative;
+        padding: 50px;
+        /* to contain absolute positioning */
+    }
 
-.main-title .paws {
-    position: absolute;
-    top: 0;      /* adjust as needed */
-    right: -70px; /* spacing from the text */
-    height: 1.2em; /* adjust size */
-    flex-shrink:0;
-}
-/* Locations Grid */
-        .section-title-location {
-            position: relative;
-            margin-top: 100px;
-            margin-bottom: 60px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(22px, 2.2vw, 32px);
-            font-weight: 550;
-            line-height: 32px;
-            color: #000;
-            text-align: center;
-            width: 100%;
-        }
+    .main-title .paws {
+        position: absolute;
+        top: 0;
+        /* adjust as needed */
+        right: -70px;
+        /* spacing from the text */
+        height: 1.2em;
+        /* adjust size */
+        flex-shrink: 0;
+    }
 
+    /* Locations Grid */
+    .section-title-location {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 60px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(22px, 2.2vw, 32px);
+        font-weight: 550;
+        line-height: 32px;
+        color: #000;
+        text-align: center;
+        width: 100%;
+    }
+
+    .locations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px 80px;
+        margin-top: 50px;
+    }
+
+    .location-item {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        padding: 20px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--text-black);
+        display: block;
+    }
+
+    .location-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
+        border-radius: 10px;
+        color: var(--text-black);
+    }
+
+    .location-item::before {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 39px;
+        background: url('/assets/paws-black.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto 8px;
+        background-position: center;
+    }
+
+    /* Back to top */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-light-gray);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        color: var(--text-black);
+        text-decoration: none;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 1024px) {
         .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px 80px;
-            margin-top: 50px;
+            grid-template-columns: repeat(2, 1fr);
         }
+    }
 
-        .location-item {
-            text-align: center;
-            font-size: 22px;
-            font-weight: 400;
-            padding: 20px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-black);
-            display: block;
-        }
-
-        .location-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 50px 50px rgba(1.5, 1, 1, 1, 0.08);
-            border-radius: 10px;
-            color: var(--text-black);
-        }
-
-        .location-item::before {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 39px;
-            background: url('/assets/paws-black.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin: 0 auto 8px;
-            background-position: center;
-        }
-
-        /* Back to top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--bg-light-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 24px;
-            color: var(--text-black);
-            text-decoration: none;
-        }
-
-        /* --- Responsive Adjustments --- */
-        @media (max-width: 1024px) {
-            .locations-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-/* Back Button Styles 
+    /* Back Button Styles 
 .main-cont {
     position: relative;
 }*/
 
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 12px;
-    background: transparent;
-    color: #000000;
-    padding: 10px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.back-btn:hover {
-    background-color: #FFFFFF;
-    transform: translateX(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.back-btn i {
-    font-size: 18px;
-}
-
-/* --- MOBILE RESPONSIVE STYLES (ADDED BELOW) --- */
-@media (max-width: 768px) {
-    
-    /* Adjust main container spacing */
-    .main-cont {
-        margin-top: 80px; /* Space for fixed header */
-    }
-
-    /* Back Button - Switch to relative for better flow on mobile */
     .back-btn {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0 15px 20px 15px;
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    /* Content Container - Reduce side padding */
-    .img-container .content {
-        padding: 10px 15px;
-    }
-
-    /* Heading Box Adjustments */
-    .heading {
-        width: 100%;
-        padding: 15px;
-        margin: 0 0 20px 0;
-        border-radius: 8px;
-    }
-
-    .main-title {
-        font-size: 22px; /* Smaller font for mobile */
-        line-height: 1.3;
-    }
-
-    /* Paw icon adjustment */
-    .main-title .paws {
-        width: 30px;
-        height: auto;
-        right: -40px;
-        top: 0;
-    }
-
-    /* Info Section Typography */
-    .info h1 {
-        font-size: 22px;
-    }
-    
-    .info p {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 12px;
+        background: transparent;
+        color: #000000;
+        padding: 10px 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
         font-size: 16px;
-        line-height: 1.5;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        z-index: 10;
     }
 
-    /* Questions Section Typography */
-    .questions h1 {
-        font-size: 22px;
-        margin-bottom: 10px;
+    .back-btn:hover {
+        background-color: #FFFFFF;
+        transform: translateX(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .questions h2 {
+    .back-btn i {
         font-size: 18px;
     }
 
-    .open-para {
-        font-size: 16px;
-        line-height: 1.5;
-    }
+    /* --- MOBILE RESPONSIVE STYLES (ADDED BELOW) --- */
+    @media (max-width: 768px) {
 
-    /* List Items (Paw + Text) */
-    .ques {
-        gap: 10px;
-        margin-bottom: 15px;
-    }
+        /* Adjust main container spacing */
+        .main-cont {
+            margin-top: 80px;
+            /* Space for fixed header */
+        }
 
-    .ques img {
-        width: 24px;
-        height: 24px;
-    }
+        /* Back Button - Switch to relative for better flow on mobile */
+        .back-btn {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 0 15px 20px 15px;
+            font-size: 14px;
+            padding: 8px 16px;
+        }
 
-    .ques p {
-        font-size: 16px;
-    }
+        /* Content Container - Reduce side padding */
+        .img-container .content {
+            padding: 10px 15px;
+        }
 
-    /* Locations Grid - Single Column */
-    .locations-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+        /* Heading Box Adjustments */
+        .heading {
+            width: 100%;
+            padding: 15px;
+            margin: 0 0 20px 0;
+            border-radius: 8px;
+        }
 
-    .location-item {
-        font-size: 18px;
-        padding: 10px;
-    }
+        .main-title {
+            font-size: 22px;
+            /* Smaller font for mobile */
+            line-height: 1.3;
+        }
 
-    .section-title-location {
-        font-size: 40px;
-        margin-top: 50px;
-        margin-bottom: 30px;
-        line-height: 1.4;
-    }
+        /* Paw icon adjustment */
+        .main-title .paws {
+            width: 30px;
+            height: auto;
+            right: -40px;
+            top: 0;
+        }
 
-    /* Book Button */
-    .book-btn a {
-        font-size: 18px;
-        padding: 10px 20px;
+        /* Info Section Typography */
+        .info h1 {
+            font-size: 22px;
+        }
+
+        .info p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Questions Section Typography */
+        .questions h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .questions h2 {
+            font-size: 18px;
+        }
+
+        .open-para {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* List Items (Paw + Text) */
+        .ques {
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ques img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .ques p {
+            font-size: 16px;
+        }
+
+        /* Locations Grid - Single Column */
+        .locations-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .location-item {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .section-title-location {
+            font-size: 40px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Book Button */
+        .book-btn a {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
     }
-}
 </style>
+
 <body>
     <div class="container">
         <header>
@@ -263,24 +271,24 @@
                         <!-- <div class="nav__content"> -->
                         <ul class="nav__links" id="nav-links">
                             <li><a href="index.html"><i class="ri-home-line"></i> Home</a></li>
-                            <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
+                            <li><a href="index.html#about"><i class="ri-information-line"></i> About</a></li>
                             <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
-                            <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
-                            <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
+                            <li><a href="index.html#client"><i class="ri-user-star-line"></i> Purpose</a></li>
+                            <li><a href="index.html#service"><i class="ri-service-line"></i> Service</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
 
-        
+
         <main>
             <div class="main-cont">
                 <a href="services.html#grooming" class="back-btn"><i class="ri-arrow-left-line"></i> Back</a>
                 <div class="img-container">
                     <!-- <img src="/assets/bg-img.png" alt="" class="background-image"> -->
                     <div class="content">
-                        
+
                         <div class="heading">
                             <div class="main-heading">
                                 <div>
@@ -292,9 +300,16 @@
 
                         <div class="info">
                             <h1>Pet Grooming Services In Hyderabad</h1>
-                            <p>PetCozi provides professional and reliable <strong>pet grooming services in LB Nagar</strong>, offering complete grooming care for dogs and cats of all breeds. We understand that regular grooming is essential for your pet’s health, hygiene, and comfort. Our experienced groomers focus on gentle handling, quality products, and a calm environment to ensure a stress-free grooming experience.</p>
+                            <p>PetCozi provides professional and reliable <strong>pet grooming services in LB
+                                    Nagar</strong>, offering complete grooming care for dogs and cats of all breeds. We
+                                understand that regular grooming is essential for your pet’s health, hygiene, and
+                                comfort. Our experienced groomers focus on gentle handling, quality products, and a calm
+                                environment to ensure a stress-free grooming experience.</p>
 
-                            <p>At PetCozi, pets are treated like family. Each grooming session is customized based on your pet’s breed, coat type, and individual needs. Whether it’s routine grooming or a full grooming makeover, we ensure your pet looks great and feels comfortable after every visit.</p>
+                            <p>At PetCozi, pets are treated like family. Each grooming session is customized based on
+                                your pet’s breed, coat type, and individual needs. Whether it’s routine grooming or a
+                                full grooming makeover, we ensure your pet looks great and feels comfortable after every
+                                visit.</p>
                         </div>
 
                         <div class="book-btn">
@@ -316,8 +331,15 @@
                         <div class="questions">
                             <h1>Complete Pet Grooming Solutions in LB Nagar</h1>
                             <div class="line"></div>
-                            <p class="open-para">Our pet grooming services in LB Nagar include <strong>bathing, coat trimming, breed-specific haircuts, nail clipping, ear cleaning, teeth cleaning, de-shedding, and tick & flea treatments.</strong> We use premium, vet-approved grooming products that are safe for your pet's skin and coat, helping maintain cleanliness and a healthy shine.</p>
-                            <p class="open-para">Regular grooming helps prevent skin infections, reduces hair fall, controls odors, and keeps parasites away. Our trained groomers carefully check your pet’s coat and skin during grooming to identify any early signs of issues, ensuring timely care.</p>   
+                            <p class="open-para">Our pet grooming services in LB Nagar include <strong>bathing, coat
+                                    trimming, breed-specific haircuts, nail clipping, ear cleaning, teeth cleaning,
+                                    de-shedding, and tick & flea treatments.</strong> We use premium, vet-approved
+                                grooming products that are safe for your pet's skin and coat, helping maintain
+                                cleanliness and a healthy shine.</p>
+                            <p class="open-para">Regular grooming helps prevent skin infections, reduces hair fall,
+                                controls odors, and keeps parasites away. Our trained groomers carefully check your
+                                pet’s coat and skin during grooming to identify any early signs of issues, ensuring
+                                timely care.</p>
                         </div>
 
 
@@ -358,15 +380,22 @@
                                     <p>Affordable pricing with transparent services</p>
                                 </div>
                             </div>
-                            <p class="open-para">We believe grooming is a vital part of pet wellness. Proper grooming improves blood circulation, prevents matting, keeps nails healthy, and enhances your pet’s overall wellbeing.</p>
+                            <p class="open-para">We believe grooming is a vital part of pet wellness. Proper grooming
+                                improves blood circulation, prevents matting, keeps nails healthy, and enhances your
+                                pet’s overall wellbeing.</p>
                         </div>
 
 
                         <div class="questions">
                             <h1>Trusted Local Pet Groomers in LB Nagar</h1>
                             <div class="line"></div>
-                            <p class="open-para">PetCozi is a trusted name for <strong>pet grooming services in LB Nagar</strong>, known for quality service and compassionate pet care. We understand the needs of local pet owners and strive to deliver consistent results that keep both pets and their owners happy.</p>
-                            <p class="open-para">If you're looking for <strong>professional pet grooming services in LB Nagar</strong>, PetCozi is the right choice. Book your appointment today and give your pet a refreshing, hygienic, and comfortable grooming experience.</p>
+                            <p class="open-para">PetCozi is a trusted name for <strong>pet grooming services in LB
+                                    Nagar</strong>, known for quality service and compassionate pet care. We understand
+                                the needs of local pet owners and strive to deliver consistent results that keep both
+                                pets and their owners happy.</p>
+                            <p class="open-para">If you're looking for <strong>professional pet grooming services in LB
+                                    Nagar</strong>, PetCozi is the right choice. Book your appointment today and give
+                                your pet a refreshing, hygienic, and comfortable grooming experience.</p>
                         </div>
 
                         <div class="questions">
@@ -379,7 +408,8 @@
                                     <p>Pet Grooming Services In Dilsukhnagar</p>
                                 </div>
                             </div>
-                            <a href="pet-grooming-Ibrahim-bagh.html" class="ques" style="text-decoration: none; color: inherit; font-weight: bold;">
+                            <a href="pet-grooming-Ibrahim-bagh.html" class="ques"
+                                style="text-decoration: none; color: inherit; font-weight: bold;">
                                 <img src="/assets/paws-black.svg" alt="" class="paws-black">
                                 <div>
                                     <p>Pet Grooming Services In Ibrahim Bagh</p>
@@ -391,29 +421,34 @@
                                     <p>Pet Grooming Services In Peerzadiguda</p>
                                 </div>
                             </div>
-                            
-                            <section>
-                    <h1 class="section-title-location"><bold>Our Grooming Service Locations</bold></h1>
-                    <div class="locations-grid">
-                        <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
-                        <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
-                        <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
-                        <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
-                        <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
-                        <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
-                        <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
-                        <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
-                        <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
-                        <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad Colony</a>
-                        <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
-                        <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
-                        <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
-                    </div>
-                </section>
 
+                            <section>
+                                <h1 class="section-title-location">
+                                    <bold>Our Grooming Service Locations</bold>
+                                </h1>
+                                <div class="locations-grid">
+                                    <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
+                                    <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
+                                    <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
+                                    <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
+                                    <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
+                                    <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
+                                    <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
+                                    <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
+                                    <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
+                                    <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad
+                                        Colony</a>
+                                    <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
+                                    <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
+                                    <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
+                                    <a href="pet-grooming-moosarambagh.html" class="location-item">Moosarambagh</a>
+                                    <a href="pet-grooming-karmanghat.html" class="location-item">Karmanghat</a>
+                                </div>
+                            </section>
+
+                        </div>
                     </div>
                 </div>
-            </div>
         </main>
     </div>
 
