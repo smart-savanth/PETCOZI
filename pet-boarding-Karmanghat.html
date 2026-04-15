@@ -359,22 +359,7 @@
                                     class="fab-option">💬 Chat Now</a>
                             </div>
                         </div>
-
-                        <section>
-                            <h2 class="section-title-location">Our Boarding Service Locations</h2>
-                            <div class="locations-grid">
-                                <a href="/pet-boarding-bahadurpura.html" class="location-item">Bahadurpura</a>
-                                <a href="/pet-boarding-himayathnagar.html" class="location-item">Himayathnagar</a>
-                                <a href="/pet-boarding-lb-nagar.html" class="location-item">LB Nagar</a>
-                                <a href="/pet-boarding-nallakunta.html" class="location-item">Nallakunta</a>
-                                <a href="/pet-boarding-padmarao-nagar.html" class="location-item">Padmaraonagar</a>
-                                <a href="/pet-boarding-tarnaka.html" class="location-item">Tarnaka</a>
-                                <a href="/pet-boarding-vanasthalipuram.html" class="location-item">Vanasthalipuram</a>
-                                <a href="/pet-boarding-Moosarambagh.html" class="location-item">Moosarambagh</a>
-                                <a href="/pet-boarding-Karmanghat.html" class="location-item">Karmanghat</a>
-                            </div>
-                        </section>
-
+                        <section id="location-container"></section>
                     </div>
                 </div>
             </div>
@@ -382,6 +367,16 @@
     </div>
 
     <script>
+        // Load locations dynamically
+        fetch("boarding-location.html")
+            .then(response => {
+                if (!response.ok)  throw new Error(`Failed to load locations: ${response.status}`);
+                
+                else return response.text();
+            })
+            .then(data => {document.getElementById("location-container").innerHTML = data;})
+            .catch(error => console.error("Error loading locations:", error));
+
         const fabContainer = document.getElementById("fabContainer");
 
         fabContainer.addEventListener("click", () => {

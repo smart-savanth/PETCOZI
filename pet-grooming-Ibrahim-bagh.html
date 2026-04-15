@@ -418,29 +418,7 @@
                             <p class="open-para">Give your pet the care they deserve. Choose PetCozi for professional,
                                 loving, and reliable pet grooming services in Ibrahim Bagh.</p>
                         </div>
-
-
-
-                        <section>
-                            <h2 class="section-title-location">Our Grooming Service Locations</h2>
-                            <div class="locations-grid">
-                                <a href="pet-grooming-Ibrahim-bagh.html" class="location-item">Ibrahim Bagh</a>
-                                <a href="pet-grooming-bahadurpura.html" class="location-item">Bahadurpura</a>
-                                <a href="pet-grooming-fatehdarwaza.html" class="location-item">Fatehdarwaza</a>
-                                <a href="pet-grooming-himayathnagar.html" class="location-item">Himayathnagar</a>
-                                <a href="pet-grooming-kanchanbagh.html" class="location-item">Kanchanbagh</a>
-                                <a href="pet-grooming-lb-nagar.html" class="location-item">LB Nagar</a>
-                                <a href="pet-grooming-mansoorabad.html" class="location-item">Mansoorabad</a>
-                                <a href="pet-grooming-nacharam.html" class="location-item">Nacharam</a>
-                                <a href="pet-grooming-nallakunta.html" class="location-item">Nallakunta</a>
-                                <a href="pet-grooming-saidabad-colony.html" class="location-item">Saidabad Colony</a>
-                                <a href="pet-grooming-saroornagar.html" class="location-item">Saroornagar</a>
-                                <a href="pet-grooming-tarnaka.html" class="location-item">Tarnaka</a>
-                                <a href="pet-grooming-vanastalipuram.html" class="location-item">Vanasthalipuram</a>
-                                <a href="pet-grooming-moosarambagh.html" class="location-item">Moosarambagh</a>
-                                <a href="pet-grooming-karmanghat.html" class="location-item">Karmanghat</a>
-                            </div>
-                        </section>
+                        <section id="location-container"></section>
                     </div>
                 </div>
             </div>
@@ -451,6 +429,16 @@
 
 
     <script>
+        // Load locations dynamically
+        fetch("grooming-location.html")
+            .then(response => {
+                if (!response.ok)  throw new Error(`Failed to load locations: ${response.status}`);
+                
+                else return response.text();
+            })
+            .then(data => {document.getElementById("location-container").innerHTML = data;})
+            .catch(error => console.error("Error loading locations:", error));
+
         const fabContainer = document.getElementById("fabContainer");
 
         fabContainer.addEventListener("click", () => {
