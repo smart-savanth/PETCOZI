@@ -220,96 +220,114 @@ const writeReviewBtn = document.getElementById("writeReviewBtn");
 const reviewForm = document.getElementById("reviewForm");
 const starRating = document.querySelectorAll("#starRating span");
 const reviewContainer = document.getElementById("reviewContainer");
+const reviewCardsContainer = document.querySelector(".review-cards-container");
 
 let selectedRating = 0;
-let isHovered = false;
-let scrollPosition = 0;
-let animationFrame;
+let currentReviewBatch = 0;
+const reviewsPerBatch = 3;
+let reviewCards = [];
+let reviewDots = [];
+let reviewRotationTimer = null;
+const reviewRotationDelay = 2500;
 
-// Initialize the review section
 function initializeReviews() {
-    cloneReviews();
-    initScrollAnimation();
-    setupEventListeners();
+  reviewContainer.style.position = 'relative';
+  reviewContainer.style.left = '0';
+  reviewCards = Array.from(document.querySelectorAll('.review-card'));
+  renderReviewDots();
+  showReviewBatch(0);
+  startReviewAutoRotation();
+  setupEventListeners();
 }
 
-// Clone reviews for infinite scroll effect
-function cloneReviews() {
-    const originalReviews = document.querySelectorAll('.review-card');
-    originalReviews.forEach(review => {
-        const clone = review.cloneNode(true);
-        reviewContainer.appendChild(clone);
+function getReviewBatchCount() {
+  return Math.max(1, Math.ceil(reviewCards.length / reviewsPerBatch));
+}
+
+function renderReviewDots() {
+  if (!reviewCardsContainer) {
+    return;
+  }
+
+  const existingDots = reviewCardsContainer.querySelector('.review-dots');
+  if (existingDots) {
+    existingDots.remove();
+  }
+
+  const dotsWrapper = document.createElement('div');
+  dotsWrapper.className = 'review-dots';
+
+  reviewDots = [];
+  const batchCount = getReviewBatchCount();
+
+  for (let index = 0; index < batchCount; index += 1) {
+    const dotButton = document.createElement('button');
+    dotButton.type = 'button';
+    dotButton.className = 'review-dot';
+    dotButton.setAttribute('aria-label', `Show review batch ${index + 1}`);
+    dotButton.addEventListener('click', () => {
+      showReviewBatch(index);
+      resetReviewAutoRotation();
     });
+    reviewDots.push(dotButton);
+    dotsWrapper.appendChild(dotButton);
+  }
+
+  reviewCardsContainer.appendChild(dotsWrapper);
 }
 
-// Setup scroll animation
-function initScrollAnimation() {
-    reviewContainer.style.position = 'relative';
-    reviewContainer.style.transition = 'left 0.5s ease-out';
-    
-    const reviewCards = document.querySelectorAll('.review-card');
-    reviewCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            isHovered = true;
-            highlightReview(card);
-            pauseScroll();
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            isHovered = false;
-            unhighlightReview(card);
-            resumeScroll();
-        });
-    });
-    
-    startScroll();
+function showReviewBatch(batchIndex) {
+  const batchCount = getReviewBatchCount();
+  currentReviewBatch = Math.min(Math.max(batchIndex, 0), batchCount - 1);
+  const startIndex = currentReviewBatch * reviewsPerBatch;
+  const endIndex = startIndex + reviewsPerBatch;
+
+  reviewCards.forEach((card, index) => {
+    card.style.display = index >= startIndex && index < endIndex ? 'block' : 'none';
+  });
+
+  reviewDots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentReviewBatch);
+  });
 }
 
-// Highlight review card on hover
-function highlightReview(card) {
-    card.style.transform = 'scale(1.05)';
-    card.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
-    card.style.zIndex = '1';
+function startReviewAutoRotation() {
+  if (getReviewBatchCount() <= 1) {
+    return;
+  }
+
+  reviewContainer.addEventListener('mouseenter', pauseReviewAutoRotation);
+  reviewContainer.addEventListener('mouseleave', resumeReviewAutoRotation);
+  scheduleNextReviewBatch();
 }
 
-// Remove highlight from review card
-function unhighlightReview(card) {
-    card.style.transform = 'scale(1)';
-    card.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.3)';
-    card.style.zIndex = '0';
+function scheduleNextReviewBatch() {
+  clearTimeout(reviewRotationTimer);
+
+  if (getReviewBatchCount() <= 1) {
+    return;
+  }
+
+  reviewRotationTimer = setTimeout(() => {
+    showReviewBatch((currentReviewBatch + 1) % getReviewBatchCount());
+    scheduleNextReviewBatch();
+  }, reviewRotationDelay);
 }
 
-// Start scrolling animation
-function startScroll() {
-    function scroll() {
-        if (!isHovered) {
-            scrollPosition -= 0.5;
-            const firstCard = document.querySelector('.review-card');
-            const cardWidth = firstCard.offsetWidth + parseInt(getComputedStyle(firstCard).marginRight);
-            const totalWidth = cardWidth * (document.querySelectorAll('.review-card').length / 2);
-            
-            if (Math.abs(scrollPosition) >= totalWidth) {
-                scrollPosition = 0;
-            }
-            
-            reviewContainer.style.left = `${scrollPosition}px`;
-        }
-        animationFrame = requestAnimationFrame(scroll);
-    }
-    
-    animationFrame = requestAnimationFrame(scroll);
+function resetReviewAutoRotation() {
+  if (getReviewBatchCount() <= 1) {
+    return;
+  }
+
+  scheduleNextReviewBatch();
 }
 
-// Pause scrolling
-function pauseScroll() {
-    if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-    }
+function pauseReviewAutoRotation() {
+  clearTimeout(reviewRotationTimer);
 }
 
-// Resume scrolling
-function resumeScroll() {
-    startScroll();
+function resumeReviewAutoRotation() {
+  scheduleNextReviewBatch();
 }
 // Setup all event listeners
 function setupEventListeners() {
@@ -423,13 +441,20 @@ function addReviewToDOM(review) {
   const reviewHTML = `
       <div class="review-card">
           <div class="stars">${"★".repeat(review.rating)}</div>
-          <p>${review.comment}</p>
-          <div class="reviewer-info">
-              <span class="reviewer">${review.name}</span> | <span>${formattedTime}</span>
+      <p class="review-text">${review.comment}</p>
+      <div class="review-meta">
+        <img class="reviewer-avatar" src="assets/food.jpg" alt="Reviewer avatar">
+        <div class="reviewer-details">
+          <span class="reviewer">${review.name}</span>
+          <span class="review-date">${formattedTime}</span>
+        </div>
           </div>
       </div>
   `;
   reviewContainer.insertAdjacentHTML("beforeend", reviewHTML);
+  reviewCards = Array.from(document.querySelectorAll('.review-card'));
+  renderReviewDots();
+  showReviewBatch(currentReviewBatch);
 }
 
 // Save review to localStorage
@@ -703,3 +728,68 @@ if (faqGridElement) {
     faqCard.classList.toggle('active');
   });
 }
+
+// Locations 
+const hyderabadLocations = [
+  { name: 'LB Nagar' },
+  { name: 'Kothapet' },
+  { name: 'Malakpet' },
+  { name: 'Uppal' },
+  { name: 'Amberpet' },
+  { name: 'Bahadurpura' },
+  { name: 'Himayathnagar' },
+  { name: 'Karmanghat' },
+  { name: 'Tarnaka' },
+  { name: 'Vanasthalipuram' }
+];
+
+const locationPinSVG = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 23.75C12.0625 21.5833 9.87 19.4792 8.4225 17.4375C6.975 15.3958 6.25083 13.3958 6.25 11.4375C6.25 8.83333 7.0625 6.69292 8.6875 5.01625C10.3125 3.33958 12.4167 2.50083 15 2.5C17.5833 2.49917 19.6875 3.33792 21.3125 5.01625C22.9375 6.69458 23.75 8.835 23.75 11.4375C23.75 13.3958 23.0263 15.3958 21.5788 17.4375C20.1313 19.4792 17.9383 21.5833 15 23.75ZM15 13.75C15.6875 13.75 16.2762 13.5054 16.7663 13.0163C17.2563 12.5271 17.5008 11.9383 17.5 11.25C17.4992 10.5617 17.2546 9.97333 16.7663 9.485C16.2779 8.99667 15.6892 8.75167 15 8.75C14.3108 8.74833 13.7225 8.99333 13.235 9.485C12.7475 9.97667 12.5025 10.565 12.5 11.25C12.4975 11.935 12.7425 12.5238 13.235 13.0163C13.7275 13.5088 14.3158 13.7533 15 13.75ZM6.25 27.5V25H23.75V27.5H6.25Z" fill="#FFCF02"/>
+</svg>`;
+
+function renderLocations() {
+  const locationsContainer = document.querySelector('.locations');
+  if (!locationsContainer) return;
+
+  const locationsHTML = hyderabadLocations.map((location, index) => `
+    <div class="location-card" style="animation-delay: ${index * 0.1}s;">
+      <div class="location-icon">
+        ${locationPinSVG}
+      </div>
+      <h3 class="location-name">${location.name}</h3>
+    </div>
+  `).join('');
+
+  locationsContainer.innerHTML = locationsHTML;
+  setupLocationsCarousel();
+}
+
+function setupLocationsCarousel() {
+  const locationsContainer = document.querySelector('.locations');
+  if (!locationsContainer) return;
+
+  const cards = Array.from(locationsContainer.querySelectorAll('.location-card'));
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    locationsContainer.appendChild(clone);
+  });
+
+  locationsContainer.style.animation = 'slideLocations 30s linear infinite';
+}
+
+const locationsStyle = document.createElement('style');
+locationsStyle.textContent = `
+  @keyframes slideLocations {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+`;
+document.head.appendChild(locationsStyle);
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderLocations();
+});
