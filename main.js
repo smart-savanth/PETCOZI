@@ -563,7 +563,6 @@ style.textContent = `
 document.head.appendChild(style);
 
 const faqSets = [
-  // Set 1
   [
     {
       question: "What amenities are included in your pet boarding services?",
@@ -576,14 +575,13 @@ const faqSets = [
     {
       question: "What types of pet food do you deliver and how fresh is it?",
       answer: "We deliver high-quality dry food, wet food, and special diet options. All food is fresh and stored properly. We can set up regular deliveries based on when your pet needs food."
-    }
-  ],
-  // Set 2
-  [
+    },
     {
       question: "How often do boarding pets get exercise and outdoor time?",
       answer: "We take pets out 3-4 times every day for exercise and play. Each pet gets personal attention and activities they enjoy. All playtime is watched by our trained staff to keep pets safe."
-    },
+    }
+  ],
+  [
     {
       question: "Do you offer mobile grooming services or only in-store?",
       answer: "We offer both in-store and mobile grooming. Our mobile van has all the same equipment as our store. You can choose what's easier for you - we come to your home or you visit our shop."
@@ -591,10 +589,7 @@ const faqSets = [
     {
       question: "Can you accommodate special dietary requirements in food delivery?",
       answer: "Yes, we can deliver food for pets with special needs, allergies, or health conditions. We offer grain-free options and special diet foods. We'll help you find the right food for your pet."
-    }
-  ],
-  // Set 3
-  [
+    },
     {
       question: "What medical supervision is available during boarding?",
       answer: "We have vets on call 24/7 and keep health records for every pet. We can give medications and watch any health issues. Our staff knows pet first aid and how to handle emergencies."
@@ -609,7 +604,7 @@ const faqSets = [
     }
   ]
 ];
-// Add this CSS to your stylesheet
+
 const faqStyles = document.createElement('style');
 faqStyles.textContent = `
 .faq-card {
@@ -624,13 +619,15 @@ faqStyles.textContent = `
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
   padding: 0 1rem;
+  opacity: 0;
 }
 
 .faq-card.active .faq-content {
-  max-height: 300px;
+  max-height: 320px;
   padding: 1rem;
+  opacity: 1;
 }
 
 .faq-icon {
@@ -654,38 +651,31 @@ faqStyles.textContent = `
 }
 `;
 document.head.appendChild(faqStyles);
-// Function to update FAQ content
+
 function updateFAQContent(questionSet) {
   const faqGrid = document.querySelector('.faq-grid');
   if (!faqGrid) return;
 
-  const faqCards = faqGrid.querySelectorAll('.faq-card');
-  if (!faqCards.length) return;
-
-  // Add fade out effect
   faqGrid.classList.add('fade-out');
 
   setTimeout(() => {
-    // Update content
-    questionSet.forEach((qa, index) => {
-      const card = faqCards[index];
-      const question = card.querySelector('.faq-question');
-      const answer = card.querySelector('.faq-content p');
-      
-      question.textContent = qa.question;
-      answer.textContent = qa.answer;
-    });
+    faqGrid.innerHTML = questionSet.map((qa) => `
+      <div class="faq-card">
+        <div class="faq-header">
+          <h4 class="faq-question">${qa.question}</h4>
+          <span class="faq-icon"><i class="ri-arrow-down-s-line"></i></span>
+        </div>
+        <div class="faq-content">
+          <p>${qa.answer}</p>
+        </div>
+      </div>
+    `).join('');
 
-    // Remove any active states
-    faqCards.forEach(card => card.classList.remove('active'));
-
-    // Add fade in effect
     faqGrid.classList.remove('fade-out');
     faqGrid.classList.add('fade-in');
   }, 300);
 }
 
-// Initialize rotation
 let currentSetIndex = 0;
 
 function rotateFAQs() {
@@ -693,22 +683,18 @@ function rotateFAQs() {
   updateFAQContent(faqSets[currentSetIndex]);
 }
 
-// Set up initial content
 const faqGridElement = document.querySelector('.faq-grid');
 if (faqGridElement) {
   updateFAQContent(faqSets[0]);
-
-  // Rotate only when FAQ exists on the page.
   setInterval(rotateFAQs, 30000);
 
-  // Clicking anywhere inside a FAQ card header toggles the card.
   faqGridElement.addEventListener('click', (e) => {
     const faqCard = e.target.closest('.faq-card');
     const faqHeader = e.target.closest('.faq-header');
     if (!faqCard || !faqHeader) return;
 
     const allCards = faqGridElement.querySelectorAll('.faq-card');
-    allCards.forEach(card => {
+    allCards.forEach((card) => {
       if (card !== faqCard) {
         card.classList.remove('active');
       }
