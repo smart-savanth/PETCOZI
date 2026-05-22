@@ -1,3 +1,123 @@
+/* Desc styling*/
+
+
+
+
+
+
+/* Locations/Areas styling */
+.areas {
+  background: linear-gradient(135deg, rgba(255, 207, 2, 0.05) 0%, rgba(48, 61, 82, 0.05) 100%);
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.locations {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  will-change: transform;
+  width: max-content;
+  min-width: 100%;
+}
+
+.location-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  flex: 0 0 auto;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 207, 2, 0.2);
+}
+
+.location-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.location-icon svg {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 4px rgba(255, 207, 2, 0.3));
+}
+
+.location-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #303D52;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .areas {
+    padding: 2rem 1rem;
+  }
+
+  .review-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .review-header h2 {
+    font-size: 2rem;
+  }
+
+  .review-card {
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+  }
+
+  .location-card {
+    min-width: 200px;
+    padding: 1rem;
+  }
+
+  .location-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .location-name {
+    font-size: 1rem;
+  }
+}
+
+
 /* review styles  */
 .container {
   width: 100%;
@@ -35,7 +155,8 @@
 }
 
 .review-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   position: relative;
 }
@@ -44,13 +165,40 @@
   background: #303D52;
   color: #ffffff;
   border-radius: 16px;
-  padding: 28px;
+  padding: 24px;
   box-shadow: 0 12px 30px rgba(8, 23, 34, 0.48);
-  width: 420px;
+  width: 100%;
   text-align: left;
-  flex: 0 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   border: 1px solid rgba(255,255,255,0.03);
+}
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.review-dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 999px;
+  background: #C6C6C6;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.review-dot.active {
+  background: #FFCF02;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 4px rgba(255, 207, 2, 0.16);
+}
+
+.review-dot:hover {
+  background: #FFCF02;
 }
 
 .stars {
@@ -109,7 +257,7 @@
 }
 
 .write-btn:hover {
-   background: #111;
+  background: #111;
   transform: translateY(-5px);
 }
 
@@ -193,78 +341,27 @@
 .star-rating span.selected {
   color: #FFD700;
 }
-
 @media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .review-header h2 {
-    font-size: 2rem;
+  .review-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
 
   .review-card {
-    width: 90%;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 18px !important;
+  }
+
+  .review-text {
+    font-size: 0.98rem;
+  }
+
+  .review-meta {
+    gap: 10px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* FAQ Section Container */
