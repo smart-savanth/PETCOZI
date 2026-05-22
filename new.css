@@ -1,3 +1,159 @@
+/* Services Section Styles */
+.services__grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.services__card {
+  position: relative;
+  flex: 0 0 280px;
+  width: 260px;
+  height: 500px;
+  border-radius: 22px;
+  overflow: hidden;
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  box-shadow: 0 24px 50px rgba(16, 24, 40, 0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.services__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(16, 24, 40, 0.22);
+}
+
+.services__card-overlay {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.services__card-content {
+  width: 100%;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: inherit;
+}
+
+.services__icon {
+  width: fit-content;
+  padding: 8px;
+  border-radius: 14px;
+  background: #cfe6f480 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  margin-bottom: 4px;
+}
+
+.services__icon img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.services__card-content h4 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.services__card-content p {
+  margin: 0;
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.services__card-content>div {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.services__btn.btn-2 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: transparent;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.services__btn.btn-2::before {
+  content: '\2192';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.services__btn:not(.btn-2) {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.services__card-content>div:last-of-type::after {
+  display: none;
+}
+
+.services__card-content>div>.services__btn:last-child::after {
+  content: '\2192';
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1rem;
+  margin-left: 6px;
+}
+
+.services__card-boarding {background-color: #c6a4d8;}
+
+.services__card-grooming {background-color: #8ab0cf;}
+
+.services__card-daycare {background-color: #d7bc72;}
+
+.services__card-food {background-color: #c98db9;}
+
+@media (max-width: 680px) {
+  .services__card {
+    width: min(100%, 280px);
+    flex: 0 0 min(100%, 280px);
+  }
+}
+
+
 /* Desc styling*/
 .desc-grid {
   display: grid;
@@ -149,6 +305,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -244,7 +401,7 @@
 
 .review-header p {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 700;
   color: Black;
 }
 
@@ -274,7 +431,7 @@
   width: 100%;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .review-dots {
@@ -307,13 +464,13 @@
 
 .stars {
   color: #FFD24D;
-  font-size: 1.25rem;
+  font-size: 2rem;
   margin-bottom: 14px;
   display: inline-block;
 }
 
 .review-text {
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.05rem;
   margin-bottom: 18px;
   line-height: 1.6;
@@ -330,7 +487,7 @@
   height: 44px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(255,255,255,0.06);
+  border: 3px solid rgba(255, 255, 255, 0.06);
 }
 
 .reviewer-details .reviewer {
@@ -341,7 +498,7 @@
 
 .reviewer-details .review-date {
   display: block;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
 }
 
@@ -349,7 +506,8 @@
   display: block;
   margin: 0 auto;
   background: #2A2A2A;
-  color: #fff200;;
+  color: #fff200;
+  ;
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -445,7 +603,8 @@
 .star-rating span.selected {
   color: #FFD700;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 750px) {
   .review-cards {
     display: flex !important;
     flex-direction: column !important;
