@@ -151,28 +151,31 @@ nav {
 }
 
 .header {
-  background: var(--home-bg);
+  background: #303D52;
   padding-top: 82px;
-  min-height: 500px;
+  min-height: auto;
   height: auto;
   display: block;
   overflow: hidden;
 }
 
 .hero {
+  min-height: 700px;
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  padding: 3rem 1rem 1rem;
+  padding: 0rem 1rem 0rem;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: center;
+  position:relative;
+  overflow:hidden;
 }
 
 .hero__left h1 {
-  color: var(--ink);
-  font-size: clamp(34px, 4.5vw, 66px);
-  line-height: 1.06;
+  color: #FFFFFF;
+  font-size: 48px;
+  line-height: 140%;
   font-weight: 500;
   letter-spacing: -0.8px;
   max-width: 560px;
@@ -180,17 +183,20 @@ nav {
 
 .hero__left h1 span {
   display: inline-block;
-  background: #000;
-  color: var(--brand-yellow);
   padding: 4px 12px 6px;
   line-height: 1.1;
   margin: 8px 0;
-  border-radius: 18px;
   font-weight: 500;
 }
-
+.hero-description {
+color: #FFFFFF;
+fontsize: 16px;
+line-height:24px;
+font-weight:500;
+margin-top:20px;
+}
 .hero__actions {
-  margin-top: 60px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
@@ -211,20 +217,73 @@ nav {
 }
 
 .hero__btn--primary {
-  background: #2A2A2A;
-  color: var(--brand-yellow);
+  background: #FFCF02;
+  color: #000000;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.38);
 }
+.trust-badge { 
+    display: inline-flex; 
+    align-items: center;
+    gap: 8px; 
+    background: rgba(255, 255, 255, 0.12); 
+    border: 1px solid rgba(255, 255, 255, 0.18); 
+    backdrop-filter: blur(6px); 
+    border-radius: 15px; 
+    padding: 8px 16px; 
+    color: #FFFFFF; 
+    font-size: 16px; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    margin-bottom: 20px; 
+}
+.trust-badge i { 
+    color: #FFCF02; 
+    font-size: 20px; 
+}
+.hero-features {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+.hero-charminar {
+    position: absolute;
+    width: 320px;
+    height: 360px;
+    z-index: 1;
+    right: 50px;
+    bottom: 0px;
+    opacity: 0.5;
+    z-index: 1;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: 12px;
+}
 
+.check-box {
+    background: #FFCF02;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: bold;
+}
 .hero__btn--primary:hover {
   background: #111;
   transform: translateY(-5px);
 }
 
 .hero__btn--ghost {
-  background: #fff;
-  color: #222;
-  border: 1px solid #e6cf00;
+  background: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.28);
 }
 
@@ -238,21 +297,25 @@ nav {
   align-items: flex-end;
   justify-content: flex-end;
   height: 100%;
+  width:100%
+  position:relative;
 }
 
 .hero__imageWrap {
-  width: min(700px, 100%);
-  background: #B1B2B5;
-  border-top-left-radius: 160px;
+  width: auto;
+  height:600px;
+  border-radius: 40px;
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   overflow: hidden;
+  position: relative;
+  z-index: 3;
 }
 
 .hero__imageWrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   object-position: center bottom;
@@ -461,9 +524,10 @@ nav {
 
   .hero__btn {
     min-width: 140px;
-    height: 46px;
-    font-size: 16px;
+    height: 44px;
+    font-size: 12px;
     padding: 8px 18px;
+    border-radius: 6px;
   }
 
   .hero__actions {
@@ -497,8 +561,9 @@ nav {
 .about-us-image {
   position: relative;
   width: 400px;
-  height: 700px;
-  border-radius: var(--border-radius);
+  height: auto;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -517,6 +582,7 @@ nav {
 
 .know-more {
   color: var(--secondary-color);
+  background-color: #FFCF02;;
   border: 1px solid black;
   padding: 10px;
   border-radius: 10px;
@@ -531,25 +597,16 @@ nav {
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #FFCF02;;
   margin-bottom: 1rem;
   position: relative;
 }
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--primary-color);
-}
 
 .section-subtitle {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: #111;
   margin-bottom: 1.5rem;
   margin-top: 2rem;
