@@ -89,64 +89,124 @@ nav {
   top: 0;
   left: 0;
   z-index: 1000;
-  backdrop-filter: blur(15px);
-  background: #000;
+  /*backdrop-filter: blur(15px);*/
+  background: #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .nav__header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 82px;
-  padding: 0 32px;
-  max-width: 1400px;
+  justify-content: space-between; /* Changed to space-between for better responsiveness */
+  height: 75px; /* Decreased strip size from 100px to 75px */
+  padding: 0 40px; /* Slightly decreased padding */
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .logo img {
-  width: 180px;
-  border-radius: 50%;
+  width: 140px; /* Adjusted logo size slightly to fit the thinner strip */
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
 }
 
-.nav__menu__btn {
-  display: none;
-  color: var(--white);
-  font-size: 1.6rem;
-  cursor: pointer;
+/* Center nav links - absolute centering like Figma */
+.nav__mobile__menu {
+  flex: 1; /* Takes up remaining space to center links */
+  display: flex;
+  justify-content: center;
 }
 
 .nav__links {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 30px; /* Slightly increased gap for breathing room */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav__links a {
-  color: var(--primary-color);
-  text-decoration: none;
+  display: inline-block; /* THIS is the key: forces the link to wrap tightly around the text */
+  font-family: 'Poppins';
+  font-style: normal;
   font-weight: 500;
   font-size: 18px;
+  line-height: 30px;
+  color: #FFFFFF;
+  text-decoration: none;
   position: relative;
+  padding-bottom: 6px; /* Gives a little space between text and underline */
   transition: color 0.3s ease;
 }
-
-.nav__links a:hover {
-  color: var(--primary-light);
-}
-
+/* Animated Underline Base */
 .nav__links a::after {
   content: "";
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
+  width: 0; 
+  height: 2px; 
+  bottom: 0;
+  left: 0; /* Changed from 50% - now starts exactly at the left edge of the text */
+  background: #FCEE30;
+  border-radius: 2px;
+  transition: width 0.3s ease; /* Smooth shift animation */
+}
+/* Underline expands on Hover */
+.nav__links a:hover::after {
+  width: 100%; 
 }
 
-.nav__links a:hover::after {
+/* Underline STAYS expanded when Active */
+.nav__links a.active::after {
+  width: 100% !important; 
+}
+
+/* Color change for active and hover */
+.nav__links a:hover,
+.nav__links a.active {
+  color: #FCEE30;
+}
+.nav__links a.active::after {
+  content: "";
+  position: absolute;
   width: 100%;
+  height: 0px;
+  bottom: 0;
+  left: 0;
+  background: #FCEE30;
+  border: 1px solid #FCEE30;
+}
+
+/* Right side - profile icon */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__profile-icon {
+  color: #FFFFFF;
+  font-size: 28px; /* Increased icon size from 24px to 28px */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transition: color 0.3s ease;
+}
+
+.nav__profile-icon:hover {
+  color: #FCEE30;
+}
+
+.nav__menu__btn {
+  display: none;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  cursor: pointer;
 }
 
 .header {
@@ -1422,5 +1482,103 @@ nav {
     height: clamp(280px, 50vh, 480px);
     /* add this line */
     margin: 0 auto;
+  }
+}
+
+/* ============ MOBILE ============ */
+@media screen and (max-width: 768px) {
+
+  .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    background: #000;
+  }
+
+  .logo img {
+    width: 120px;
+    height: auto;
+  }
+
+  .nav__mobile__menu {
+    position: fixed;
+    top: 0;
+    right: -80%;
+    left: auto;
+    transform: none;
+    width: 70%;
+    height: 100vh;
+    background: #000;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .nav__mobile__menu.active {
+    right: 0;
+  }
+
+  .nav__links {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .nav__links a {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav__links a:hover {
+    color: #FCEE30;
+    transform: scale(1.05);
+  }
+
+  .nav__links a.active::after {
+    display: none;
+  }
+
+  .nav__links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .nav__mobile__menu.active .nav__links li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav__mobile__menu.active .nav__links li:nth-child(1) { transition-delay: 0.2s; }
+  .nav__mobile__menu.active .nav__links li:nth-child(2) { transition-delay: 0.3s; }
+  .nav__mobile__menu.active .nav__links li:nth-child(3) { transition-delay: 0.4s; }
+  .nav__mobile__menu.active .nav__links li:nth-child(4) { transition-delay: 0.5s; }
+
+  .nav__right {
+    display: none;
+  }
+
+  .nav__menu__btn {
+    display: block;
+    font-size: 1.8rem;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .header {
+    padding-top: 70px;
+    height: auto;
+    min-height: auto;
   }
 }

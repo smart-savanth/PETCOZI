@@ -21,12 +21,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-size 0.5s ease-in-out; /* <-- NEW LINE */
 }
-
 .services__card:hover {
   transform: translateY(-6px);
   box-shadow: 0 30px 60px rgba(16, 24, 40, 0.22);
+  background-size: 110% auto; /* <-- ADD THIS LINE */
 }
 
 .services__card-overlay {

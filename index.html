@@ -32,25 +32,26 @@
 <body>
   <header class="header">
     <nav>
-      <div class="nav__header">
-        <div class="logo">
-          <a href="index.html"><img src="assets\pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <i class="ri-menu-line"></i>
-        </div>
-        <div class="nav__mobile__menu">
-          <!-- <div class="nav__content"> -->
-          <ul class="nav__links" id="nav-links">
-            <li><a href="#home"><i class="ri-home-line"></i> Home</a></li>
-            <li><a href="#about"><i class="ri-information-line"></i> About</a></li>
-            <!-- <li><a href="/PetServices/Food.html"><i class="ri-information-line"></i> About</a></li> -->
-            <li><a href="#client"><i class="ri-user-star-line"></i> Purpose</a></li>
-            <li><a href="#service"><i class="ri-service-line"></i> Service</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <div class="nav__header">
+    <div class="logo">
+      <a href="index.html"><img src="assets/pixelcut-export (1) copy.png" alt="PetCozi Logo" /></a>
+    </div>
+    <div class="nav__mobile__menu" id="nav-mobile">
+      <ul class="nav__links" id="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About Us</a></li>
+  <li><a href="#service">Services</a></li>
+  <li><a href="#">Blogs</a></li>
+</ul>
+    </div>
+    <div class="nav__right">
+      <a href="#" class="nav__profile-icon"><i class="ri-user-line"></i></a>
+    </div>
+    <div class="nav__menu__btn" id="menu-btn">
+      <i class="ri-menu-line"></i>
+    </div>
+  </div>
+</nav>
 
     <div class="section__container hero" id="home">
 
@@ -795,6 +796,65 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
+ <script>
+    // --- Navbar ScrollSpy & Active Link Shift ---
+
+    const sections = document.querySelectorAll('section[id], div[id="home"]');
+    const navLinks = document.querySelectorAll('.nav__links a');
+    const navbar = document.querySelector('nav');
+
+    let isClickScrolling = false; // Prevents observer from overriding a click
+
+    // Function to update the active link based on current scroll position
+    function updateActiveLinkOnScroll() {
+      if (isClickScrolling) return; // If we clicked, don't let scroll override it yet
+
+      let currentSection = '';
+      const navHeight = navbar.offsetHeight;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - navHeight - 100; 
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        // Check if the current scroll position is inside this section
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      // Update the active class on the links
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Listen for scrolling
+    window.addEventListener('scroll', updateActiveLinkOnScroll);
+
+    // Handle clicks to instantly shift the underline
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // 1. Instantly move the underline to the clicked link
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+
+        // 2. Pause the scroll spy so it doesn't snap the line back to the old section
+        isClickScrolling = true;
+
+        // 3. Resume the scroll spy after 1 second (once smooth scrolling finishes)
+        setTimeout(() => {
+          isClickScrolling = false;
+          updateActiveLinkOnScroll(); // Double-check position after scroll finishes
+        }, 1000);
+      });
+    });
+
+    // Set the correct active link when the page first loads
+    updateActiveLinkOnScroll();
+  </script>
 </body>
 
 
