@@ -23,11 +23,6 @@
   justify-content: flex-end;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-size 0.5s ease-in-out;
 }
-.services__card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 60px rgba(16, 24, 40, 0.22);
-  background-size: 110% auto; 
-}
 
 .services__card-overlay {
   width: 100%;
